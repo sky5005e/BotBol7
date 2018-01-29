@@ -1,0 +1,59 @@
+﻿<div class="container">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required aria-describedby="nameHelp" placeholder="Enter first name" />
+                                <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                                <label for="lastName">First Name</label>
+                                <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required aria-describedby="nameHelp" placeholder="Enter last name" />
+                                <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                        <label for="username">Email address</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="model.username" #username="ngModel" required aria-describedby="emailHelp" placeholder="Enter email" />
+                        <div *ngIf="f.submitted && !username.valid" class="help-block">Email is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="Password" />
+                                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                                <label for="confirmpassword">Confirm password</label>
+                                <input type="password" class="form-control" name="confirmpassword" [(ngModel)]="model.confirmpassword" #confirmpassword="ngModel" required placeholder="Confirm password" />
+                                <div *ngIf="f.submitted && !confirmpassword.valid" class="help-block">Last name is required</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary btn-block">Register</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+            </form>
+            <div class="text-center">
+                <a [routerLink]="['/login']" class="d-block small mt-3">Login</a>
+                <a [routerLink]="['/forgotpassword']" class="d-block small">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</div>

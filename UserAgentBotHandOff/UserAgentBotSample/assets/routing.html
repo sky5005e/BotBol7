@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Zopim</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+  </head>
+  <body class="fixed-nav sticky-footer bg-dark">
+
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="index.html">Bol 7</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="index.html">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Home</span>
+          </a>
+        </li>
+     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+          <a class="nav-link" href="visitors.html">
+            <i class="fa fa-fw fa-area-chart"></i>
+            <span class="nav-link-text">Visitors</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="analytics.html">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Analytics</span>
+          </a>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="history.html">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">History</span>
+          </a>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+          <a class="nav-link" href="monitor.html">
+            <i class="fa fa-fw fa-table"></i>
+            <span class="nav-link-text">Monitor</span>
+          </a>
+        </li>
+        
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Setting</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+           <li class="active"><a href="agents.html">Agents</a></li>
+<li><a href="departments.html">Departments</a></li>
+<li><a href="roles.html">Roles</a></li>
+<li><a href="routing.html">Routing</a></li>
+<li><a href="shortcuts.html">Shortcuts</a></li>
+<li><a href="banned.html">Banned</a></li>
+<li><a href="triggers.html">Triggers</a></li>
+<li><a href="goals.html">Goals</a></li>
+<li><a href="widget.html">Widget</a></li>
+<li><a href="personal.html">Personal</a></li>
+<li><a href="account.html">Account</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Team</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="login.html">All View</a>
+            </li>
+            
+          </ul>
+        </li>
+        
+        
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+            <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="messagesDropdown">
+            <h6 class="dropdown-header">New Messages:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>David Miller</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>Jane Smith</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <strong>John Doe</strong>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all messages</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-fw fa-bell"></i>
+            <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+            <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">New Alerts:</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+              <span class="small float-right text-muted">11:21 AM</span>
+              <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item small" href="#">View all alerts</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+   
+     
+     <div class="container">
+          <div class="row">
+          
+          <div class="buynow">
+          <div class="col-xl-12">
+          <span class="pull-left">Routing</span>
+          
+          </div></div>
+       
+        </div>
+  
+     
+     </div>
+     <div class="container">
+          <div class="row">
+          <div class="widget">
+          <div class="agent">
+          <div class="right">
+
+<div id="horizontalTab">
+<ul class="resp-tabs-list">
+<li>Settings</li>
+<li>Skills</li>
+</ul>
+<div class="resp-tabs-container">
+<div>
+<div class="widget_ds">
+<div style="background:#FFF8CE; padding: 10px; margin-bottom:20px; margin-top:10px;">
+<h5>Restricted Feature</h5>
+<ul>
+<li>The customization options for Chat Routing are unavailable for your plan.</li>
+<li><a href="#">Upgrade your account</a>  to Professional or Enterprise to enable all features.</li>
+<li>Skills-based Routing is available only on Enterprise.</li>
+</ul>
+</div>
+
+
+<div class="inner">
+<div class="inner_ds">
+<h4>Chat Routing</h4>
+</div>
+<p>Choose how agents will receive incoming chat requests.</p>
+<div class="tbs">
+
+<div class="tab-content">
+   <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#home" class="active"><img src="img/brodcast.png" width="75" height="47"><span>Broadcast</span></a></li>
+    <li><a data-toggle="tab" href="#menu1"><img src="img/assisned.png" width="75" height="47"><span>Assigned</span></a></li>
+   
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">     
+      <p>Agents are notified of all incoming chat requests and serve chats from a shared queue.</p>
+     <div class="inner2">
+<div class="inner_ds2">
+<h4>Chat Limit</h4>
+
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+
+<p>Limit the number of chats that each agent is allowed to take at one time.</p>
+<div class="chatlimit">
+<div class="left">Apply To</div>
+<div class="right"><button type="button" data-switch-toggle="animate" class="btn btn-default">Account</button>
+<button type="button" data-switch-get="animate" class="btn btn-default">Agent</button></div>
+</div>
+<div class="chatlimit">
+<div class="left">Maximum Chats</div>
+<div class="right"><input placeholder="3" required class="form-control" type="email" style="width:50px;">
+<p>This chat limit will apply to all agents.</p></div>
+</div>
+
+<div class="chatlimit">
+<div class="change">
+<div class="right"><div class="default"> <i class=" fa fa-save"></i> Save Changes</div>
+<div class="cancel"> Revert Changes</div>
+<div class="cancel pull-right"> Reset to Defaults</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="menu1" class="tab-pane fade">
+      <p>Agents are notified of all incoming chat requests and serve chats from a shared queue.</p>
+<div class="inner2">
+<div class="inner_ds2">
+<h4>Skill Routing</h4>
+
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+
+<p>Route chat to agents based on skills they have and visitor tags applied to the visitor. <a href="#">Learn more</a></p>
+<div class="chatlimit">
+<div class="left">Apply To</div>
+<div class="right"><select class="disabled form-control" disabled="">
+<option>5</option>
+<option value="30" class="disabled" disabled="">30</option>
+<option value="60" class="disabled" disabled="">60</option>
+<option value="90" class="disabled"  disabled="">90</option>
+<option value="120" class="disabled" disabled="">120</option>
+<option value="150" class="disabled" disabled="">150</option>
+<option value="180" class="disabled" disabled="">180</option>
+<option value="300" class="disabled" disabled="">300</option>
+</select>
+<p>Time (in seconds) without finding an agent with the exact skill-match before assigning the chat to the most available agent.</p>
+</div>
+</div>
+<div class="chatlimit">
+<div class="left">Set Up</div>
+<div class="right"><p>1. Create and apply skills to agents.</p>
+<p>2. Apply visitor tags to your visitors. Visitor tags identical to skills will be considered for skill routing.</p>
+<p>3. For incoming chats, chats with a set of tags will be routed to agents with the exact set of skills, up to maximum wait time. Subsequently, the chat will be routed to any available agent within the department or account.</p>
+</div>
+</div>
+</div>
+<div class="inner2">
+<div class="inner_ds2">
+<h4>Chat Limit</h4>
+
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+
+<p>Limit the number of chats that each agent is allowed to take at one time.</p>
+<div class="warn"><p>All incoming chats will be assigned immediately, even if agents are already serving many chats.</p></div>
+<div class="chatlimit">
+<div class="left">Apply To</div>
+<div class="right"><button type="button" data-switch-toggle="animate" class="btn btn-default">Account</button>
+<button type="button" data-switch-get="animate" class="btn btn-default">Agent</button></div>
+</div>
+<div class="chatlimit">
+<div class="left">Maximum Chats</div>
+<div class="right"><input placeholder="3" required class="form-control" type="email" style="width:50px;">
+<p>This chat limit will apply to all agents.</p></div>
+</div>
+</div>
+
+<div class="inner2">
+<div class="inner_ds2">
+<h4>Hybrid Assignment Mode</h4>
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+<p>Enable Chat Limits to enable Hybrid Assignment Mode.</p>
+
+
+
+<div class="chatlimit">
+<div class="left">Allow Hybrid Assignment</div>
+<div class="right"><input type="checkbox" id="c2" name="cc">
+    <label for="c2"><span></span></label>Agents can serve unassigned chats when they have reached their chat limits.</div>
+</div>
+</div>
+<div class="inner2">
+<div class="inner_ds2">
+<h4>Reassignment</h4>
+
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+
+<p>Reassign chats if the agent does not serve the assigned chat within a specified time frame.</p>
+<div class="warn"><p>Some visitors might experience longer waiting times if Reassignment is disabled.</p></div>
+
+<div class="chatlimit">
+<div class="left">Reassignment Timeout</div>
+<div class="right"><input placeholder="3" required class="form-control" type="email" style="width:50px;">
+<p>Time (in seconds) with no response before a chat is assigned to another agent.</p></div>
+</div>
+</div>
+
+<div class="inner2">
+<div class="inner_ds2">
+<h4>Automatic Idle</h4>
+
+<div class="ste_on"> <label class="switch">
+	<input class="switch-input" type="checkbox" />
+	<span class="switch-label" data-on="On" data-off="Off"></span> 
+	<span class="switch-handle"></span> 
+</label></div>
+</div>
+
+<p>Set an agent's status to Away or Invisible if they have a consecutive number of chats reassigned.</p>
+<p><strong>Enable Reassignment to enable Automatic Idle.</strong></p>
+
+<div class="chatlimit">
+<div class="left">Chats Reassigned</div>
+<div class="right"><input placeholder="3" required class="form-control" type="email" style="width:50px;">
+<p>Number of chats reassigned before the agent's status is changed.</p></div>
+</div>
+
+<div class="chatlimit">
+<div class="left">Idle Status</div>
+<div class="right">
+<label class="container">Away
+  <input type="radio" checked="checked" name="radio">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Invisible
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+
+<div class="chatlimit">
+<div class="change">
+<div class="right"><div class="default"> <i class=" fa fa-save"></i> Save Changes</div>
+<div class="cancel"> Revert Changes</div>
+<div class="cancel pull-right"> Reset to Defaults</div>
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="right_wi">
+
+<div class="add_agent">
+<h4>Quick Tips</h4>
+
+<h5>Broadcast</h5>     
+<p>Broadcasting chats give agents more autonomy, allowing them to work at their own pace. Set a chat limit to control quality by preventing agents from taking on too many chats at once. 
+
+</p>
+
+<h5>Assigned</h5>
+<p>Assigned chats help maintain an even workload distribution, especially for larger teams.
+Chat limits keep agents from getting overwhelmed by chats, especially during high traffic.
+Experienced agents can help clear the queue faster with the Hybrid Assignment Mode.
+Enable Reassignments and Automatic Idle to reduce visitor wait time by preventing chats from getting assigned to inactive agents.
+<span>Learn more</span>
+</p>
+
+</div>
+
+</div>
+</div>
+          
+<div>2</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+          
+
+          
+</div>
+</div>
+</div>
+    
+    
+    
+
+    
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © All Right Reserved</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="tpt">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+ <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="jquery.copy-to-clipboard.js"></script>
+<script>
+ $('.demo').click(function(){
+        $(this).CopyToClipboard();
+    });
+</script>
+    
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="js/sb-admin.min.js"></script>
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+<script src="js/easy-responsive-tabs.js"></script>
+<script>
+$(document).ready(function () {
+$('#horizontalTab').easyResponsiveTabs({
+type: 'default', //Types: default, vertical, accordion           
+width: 'auto', //auto or any width like 600px
+fit: true,   // 100% fit in a container
+closed: 'accordion', // Start closed if in accordion view
+activate: function(event) { // Callback function if tab is switched
+var $tab = $(this);
+var $info = $('#tabInfo');
+var $name = $('span', $info);
+$name.text($tab.text());
+$info.show();
+}
+});
+});
+</script>
+    
+    
+  </div>
+</body>
+
+</html>

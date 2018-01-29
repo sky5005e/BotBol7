@@ -1,0 +1,34 @@
+﻿<app-admin-header></app-admin-header>
+<div class="content-wrapper" style="background-color:whitesmoke;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 visitors">
+                <div id="horizontalTab">
+                    <h5 class="pull-left">Website Analytics</h5>
+                    <div class="resp-tabs-container">
+                        <div class="card-body">
+                            <canvas baseChart
+                                    [chartType]="'line'"
+                                    [datasets]="chartData"
+                                    [labels]="chartLabels"
+                                    [options]="chartOptions"
+                                    [legend]="true"
+                                    (chartClick)="onChartClick($event)"
+                                    width="1027" height="308"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+<app-admin-footer></app-admin-footer>
+<app-logout></app-logout>
+

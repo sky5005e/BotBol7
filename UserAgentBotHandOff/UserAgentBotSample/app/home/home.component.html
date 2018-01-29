@@ -1,0 +1,180 @@
+﻿<!--<div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with Angular 2!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>-->
+<app-admin-header></app-admin-header>
+<!--<div>
+    <h1>User agent bot</h1>
+    <p>Describe your bot here and your terms of use etc.</p>
+    <p>
+        Visit <a href="https://www.botframework.com/">Bot Framework</a> to register your bot.
+        When you register it, remember to set your bot's endpoint to https://<i>your_bots_hostname</i>/api/messages
+    </p>
+
+    <div>
+       <span class="skype-button rounded" data-bot-id="e43ce9e2-dc65-4f65-ad7f-47b258dd1b1c"><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png' /></span>
+
+        <a href='https://www.messenger.com/t/1922108861136865'><img src='https://facebook.botframework.com/Content/MessageUs.png'></a>
+
+        <a href='https://telegram.me/UserAgent_bot'> UserAgent_bot</a>
+
+        <iframe src='https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U' width="300" height="300"></iframe>
+    </div>
+</div>-->
+
+<div class="content-wrapper" style="background-color:whitesmoke;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="buynow">
+                <div class="col-xl-12">
+                    <h3 class="pull-left">Hello, mukesh!</h3>
+                    <span class="pull-right">4 days left in trial <a href="#" class="btn btn-warning">Buy Now</a></span>
+
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-4 col-6">
+                <div class="wrapper count-title d-flex color_1" [routerLink]="['/widget']">
+                    <div class="wiget"><i class="fa fa-chain-broken"></i></div>
+                    <div class="name">
+                        <strong class="text-uppercase">Widget</strong><p>Embed and customize the chat widget on your website</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-6">
+                <div class="wrapper count-title d-flex color_2" [routerLink]="['/visitors']">
+                    <div class="wiget1"><i class="fa fa-user"></i></div>
+                    <div class="name">
+                        <strong class="text-uppercase">Visitors</strong><p>See a list of all your web visitors and chat with them</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-6">
+                <div class="wrapper count-title d-flex color_3" [routerLink]="['/analytics']">
+                    <div class="wiget2"><i class="fa fa-bar-chart"></i></div>
+                    <div class="name">
+                        <strong class="text-uppercase">Analytics</strong>
+                        <p>Track the chats you have with customers</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-4 col-6">
+                <div class="wrapper count-title d-flex color_4" [routerLink]="['/triggers']">
+                    <div class="wiget3"><i class="fa fa-location-arrow"></i></div>
+                    <div class="name">
+                        <strong class="text-uppercase">Triggers</strong><p>Send chat invites or custom messages to pre-qualified leads</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <hr>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 visitors">
+                <div id="horizontalTab">
+                    <h5 class="pull-left">Website Analytics</h5>
+                    <ul class="resp-tabs-list pull-right">
+                        <li>Hourly</li>
+                        <li>Daily</li>
+                        <li>Weekly</li>
+                        <li>Monthly</li>
+
+                    </ul>
+                    <div class="resp-tabs-container">
+                        <div class="card-body">
+                            <canvas baseChart
+                                    [chartType]="'line'"
+                                    [datasets]="chartData"
+                                    [labels]="chartLabels"
+                                    [options]="chartOptions"
+                                    [legend]="true"
+                                    (chartClick)="onChartClick($event)"
+                                    width="1027" height="308"></canvas>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right_tb">
+                    <ul>
+                        <h4>Latest Chat Updates</h4>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
+
+                    </ul>
+
+                    <div class="tag"><img src="assets/img/tags_ipm.png" width="80" height="90"></div>
+                    <h5>Organize your conversations with tags</h5>
+                    <p>Understand the types of problems that your customers are facing</p>
+
+                    <h3><a href="#">Recent Website Activity</a></h3>
+                    <ul>
+                        <li>You are now Invisible</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+</div>
+        <!--<h1>MyQnAbotTest</h1>
+        <p> this is testing bot for MyQnAbotTest</p>
+
+        <a href='https://www.messenger.com/t/1950060015320438'><img src='https://facebook.botframework.com/Content/MessageUs.png'></a>
+        <br />
+        <a href='https://teams.microsoft.com/l/chat/0/0?users=28:c84a16ec-d7b8-4d0c-947d-c7cb36f5ce4d'><img src='https://dev.botframework.com/Client/Images/Add-To-MSTeams-Buttons.png'></a>
+        <br />
+        <a href='https://join.skype.com/bot/c84a16ec-d7b8-4d0c-947d-c7cb36f5ce4d'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png' /></a>
+        <br />
+        <a href='https://telegram.me/MyFirstBotDemoSkyGmailBot'>@MyFirstBotDemoSkyGmailBot</a>
+        <br />
+        <iframe src='https://webchat.botframework.com/embed/MyQnAbotTest?s=ilTrhrRMPIw.cwA.hJc.ClZnoqx06Oe7RVdz0glyIL6BUTdqNLJBhkruxI0RV8U' width="300" height="300"></iframe>-->
+    <div class="container">
+
+            <h1>User agent bot</h1>
+            <p>Describe your bot here and your terms of use etc.</p>
+            <p>
+                Visit <a href="https://www.botframework.com/">Bot Framework</a> to register your bot.
+                When you register it, remember to set your bot's endpoint to https://<i>your_bots_hostname</i>/api/messages
+            </p>
+
+            <div>
+                <a href='https://join.skype.com/bot/e43ce9e2-dc65-4f65-ad7f-47b258dd1b1c'><img src='https://dev.botframework.com/Client/Images/Add-To-Skype-Buttons.png'></a>
+
+                <a href='https://www.messenger.com/t/1922108861136865'><img src='https://facebook.botframework.com/Content/MessageUs.png'></a>
+
+                <a href='https://telegram.me/UserAgent_bot'>@UserAgent_bot</a>
+
+                <iframe src='https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U' width="300" height="300"></iframe>
+
+            </div>
+        </div>
+
+</div>
+<app-admin-footer></app-admin-footer>
+<app-logout></app-logout>
+

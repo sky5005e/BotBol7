@@ -1,0 +1,702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8BA1066-5695-4D71-ABB4-65E5A5E0C3D4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UserAgentBot</RootNamespace>
+    <AssemblyName>UserAgentBot</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="BotMessageRouting, Version=0.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Underscore.Bot.MessageRouting.0.9.2\lib\net46\BotMessageRouting.dll</HintPath>
+    </Reference>
+    <Reference Include="Chronic, Version=0.3.2.0, Culture=neutral, PublicKeyToken=3bd1f1ef638b0d3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chronic.Signed.0.3.2\lib\net40\Chronic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.2.0.4\lib\net45\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder, Version=3.12.2.4, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.3.12.2.4\lib\net46\Microsoft.Bot.Builder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Autofac, Version=3.12.2.4, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.3.12.2.4\lib\net46\Microsoft.Bot.Builder.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Connector, Version=3.12.2.4, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Connector.3.12.2.4\lib\net46\Microsoft.Bot.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.5\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.4.403061554\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=2.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.2.1.5\lib\net451\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=2.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.2.1.5\lib\net451\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.5\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.3\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.5\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\admin\account\account.component.html" />
+    <Content Include="app\admin\admin.component.html" />
+    <Content Include="app\admin\agents\agents.component.html" />
+    <Content Include="app\admin\agenttest\agenttest.component.html" />
+    <Content Include="app\admin\analytics\analytics.component.html" />
+    <Content Include="app\admin\banned\banned.component.html" />
+    <Content Include="app\admin\department\department.component.html" />
+    <Content Include="app\admin\goals\goals.component.html" />
+    <Content Include="app\admin\history\history.component.html" />
+    <Content Include="app\admin\layouts\admin-header\admin-header.component.css" />
+    <Content Include="app\admin\layouts\admin-header\admin-header.component.html" />
+    <Content Include="app\admin\layouts\admin-leftside\admin-leftside.component.html" />
+    <Content Include="app\admin\monitor\monitor.component.html" />
+    <Content Include="app\admin\personal\personal.component.html" />
+    <Content Include="app\admin\quesanswer\addques.component.html" />
+    <Content Include="app\admin\roles\roles.component.html" />
+    <Content Include="app\admin\routing\routing.component.html" />
+    <Content Include="app\admin\shortcuts\shortcuts.component.html" />
+    <Content Include="app\admin\triggers\triggers.component.html" />
+    <Content Include="app\admin\visitors\visitors.component.html" />
+    <Content Include="app\admin\widget\widget.component.html" />
+    <Content Include="app\app.component.html" />
+    <Content Include="app\forgotpassword\forgotpassword.component.html" />
+    <Content Include="app\home\home.component.html" />
+    <Content Include="app\login\login.component.html" />
+    <Content Include="app\register\register.component.html" />
+    <Content Include="app\user\user.component.html" />
+    <Content Include="app\_directives\alert.component.html" />
+    <Content Include="app\_directives\footer.component.html" />
+    <Content Include="app\_directives\header.component.html" />
+    <Content Include="app\_directives\logout.component.html" />
+    <Content Include="assets\agents.html" />
+    <Content Include="assets\analytics.html" />
+    <Content Include="assets\banned.html" />
+    <Content Include="assets\css\sb-admin.css" />
+    <Content Include="assets\css\sb-admin.min.css" />
+    <Content Include="assets\departments.html" />
+    <Content Include="assets\forgot-password.html" />
+    <Content Include="assets\goals.html" />
+    <Content Include="assets\history.html" />
+    <Content Include="assets\img\assisned.png" />
+    <Content Include="assets\img\avatar-1.jpg" />
+    <Content Include="assets\img\avatar-2.jpg" />
+    <Content Include="assets\img\avatar-3.jpg" />
+    <Content Include="assets\img\avatar-4.jpg" />
+    <Content Include="assets\img\avatar-5.jpg" />
+    <Content Include="assets\img\avatar-6.jpg" />
+    <Content Include="assets\img\away.png" />
+    <Content Include="assets\img\bge.jpg" />
+    <Content Include="assets\img\border_s.png" />
+    <Content Include="assets\img\brodcast.png" />
+    <Content Include="assets\img\check_radio_sheet.png" />
+    <Content Include="assets\img\cups-and.png" />
+    <Content Include="assets\img\define.png" />
+    <Content Include="assets\img\favicon.ico" />
+    <Content Include="assets\img\ico-checkbox.png" />
+    <Content Include="assets\img\ico-radio.png" />
+    <Content Include="assets\img\icon_analytics.png" />
+    <Content Include="assets\img\icon_analytics_hover.png" />
+    <Content Include="assets\img\icon_triggers.png" />
+    <Content Include="assets\img\icon_triggers_hover.png" />
+    <Content Include="assets\img\icon_visitors.png" />
+    <Content Include="assets\img\icon_visitors_hover.png" />
+    <Content Include="assets\img\icon_widget.png" />
+    <Content Include="assets\img\icon_widget_hover.png" />
+    <Content Include="assets\img\illustration_support_chatrescuer.png" />
+    <Content Include="assets\img\illustration_support_proactive.png" />
+    <Content Include="assets\img\illustration_support_tags.png" />
+    <Content Include="assets\img\improve.png" />
+    <Content Include="assets\img\invisible.png" />
+    <Content Include="assets\img\line.png" />
+    <Content Include="assets\img\line1.png" />
+    <Content Include="assets\img\line2.png" />
+    <Content Include="assets\img\live.png" />
+    <Content Include="assets\img\monitor.png" />
+    <Content Include="assets\img\phone4.png" />
+    <Content Include="assets\img\project-1.jpg" />
+    <Content Include="assets\img\project-2.jpg" />
+    <Content Include="assets\img\project-3.jpg" />
+    <Content Include="assets\img\project-4.jpg" />
+    <Content Include="assets\img\sort_asc.png" />
+    <Content Include="assets\img\sort_both.png" />
+    <Content Include="assets\img\sort_desc.png" />
+    <Content Include="assets\img\splashscreen.png" />
+    <Content Include="assets\img\tags_ipm.png" />
+    <Content Include="assets\img\template-mac.png" />
+    <Content Include="assets\img\vv.jpg" />
+    <Content Include="assets\index.html" />
+    <Content Include="assets\js\easy-responsive-tabs.js" />
+    <Content Include="assets\js\jquery.copy-to-clipboard.js" />
+    <Content Include="assets\js\jquery.gorilla-dropdown.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\sb-admin-charts.js" />
+    <Content Include="assets\js\sb-admin-charts.min.js" />
+    <Content Include="assets\js\sb-admin-datatables.js" />
+    <Content Include="assets\js\sb-admin-datatables.min.js" />
+    <Content Include="assets\js\sb-admin.js" />
+    <Content Include="assets\js\sb-admin.min.js" />
+    <Content Include="assets\login.html" />
+    <Content Include="assets\register.html" />
+    <Content Include="assets\roles.html" />
+    <Content Include="assets\routing.html" />
+    <Content Include="assets\shortcuts.html" />
+    <Content Include="assets\triggers.html" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="assets\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="assets\vendor\chart.js\Chart.js" />
+    <Content Include="assets\vendor\chart.js\Chart.min.js" />
+    <Content Include="assets\vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="assets\vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="assets\vendor\datatables\jquery.dataTables.js" />
+    <Content Include="assets\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="assets\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="assets\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="assets\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="assets\vendor\jquery\jquery.js" />
+    <Content Include="assets\vendor\jquery\jquery.min.js" />
+    <Content Include="assets\visitors.html" />
+    <Content Include="assets\widget.html" />
+    <Content Include="build\app\admin\admin.component.js" />
+    <Content Include="build\app\admin\admin.module.js" />
+    <Content Include="build\app\admin\admin.routing.js" />
+    <Content Include="build\app\admin\agents\agents.component.js" />
+    <Content Include="build\app\admin\history\history.component.js" />
+    <Content Include="build\app\admin\index.js" />
+    <Content Include="build\app\admin\layouts\admin-header\admin-header.component.js" />
+    <Content Include="build\app\admin\layouts\admin-header\admin-header.component.spec.js" />
+    <Content Include="build\app\admin\layouts\admin-leftside\admin-leftside.component.js" />
+    <Content Include="build\app\app.component.js" />
+    <Content Include="build\app\app.module.js" />
+    <Content Include="build\app\app.routing.js" />
+    <Content Include="build\app\forgotpassword\forgotpassword.component.js" />
+    <Content Include="build\app\forgotpassword\index.js" />
+    <Content Include="build\app\home\home.component.js" />
+    <Content Include="build\app\home\index.js" />
+    <Content Include="build\app\login\index.js" />
+    <Content Include="build\app\login\login.component.js" />
+    <Content Include="build\app\main.js" />
+    <Content Include="build\app\register\index.js" />
+    <Content Include="build\app\register\register.component.js" />
+    <Content Include="build\app\user\index.js" />
+    <Content Include="build\app\user\user.component.js" />
+    <Content Include="build\app\_directives\alert.component.js" />
+    <Content Include="build\app\_directives\index.js" />
+    <Content Include="build\app\_filter\index.js" />
+    <Content Include="build\app\_filter\user.pipe.js" />
+    <Content Include="build\app\_guards\auth.guard.js" />
+    <Content Include="build\app\_helpers\fake-backend.js" />
+    <Content Include="build\app\_helpers\index.js" />
+    <Content Include="build\app\_models\index.js" />
+    <Content Include="build\app\_models\user.js" />
+    <Content Include="build\app\_models\users.js" />
+    <Content Include="build\app\_services\alert.service.js" />
+    <Content Include="build\app\_services\authentication.service.js" />
+    <Content Include="build\app\_services\index.js" />
+    <Content Include="build\app\_services\user.service.js" />
+    <Content Include="build\app\_services\users.service.js" />
+    <Content Include="build\app\_shared\enum.js" />
+    <Content Include="build\app\_shared\errorhandler.js" />
+    <Content Include="build\app\_shared\global.js" />
+    <Content Include="build\app\_shared\search.component.js" />
+    <Content Include="DataModel\UserAgentBotData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserAgentBotData.edmx</DependentUpon>
+      <LastGenOutput>UserAgentBotData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataModel\UserAgentBotData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserAgentBotData.edmx</DependentUpon>
+      <LastGenOutput>UserAgentBotData.cs</LastGenOutput>
+    </Content>
+    <Content Include="default.htm" />
+    <Content Include="default1.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="build\app\app.component.js.map" />
+    <Content Include="build\app\app.module.js.map" />
+    <Content Include="build\app\app.routing.js.map" />
+    <Content Include="build\app\home\home.component.js.map" />
+    <Content Include="build\app\home\index.js.map" />
+    <Content Include="build\app\login\index.js.map" />
+    <Content Include="build\app\login\login.component.js.map" />
+    <Content Include="build\app\main.js.map" />
+    <Content Include="build\app\register\index.js.map" />
+    <Content Include="build\app\register\register.component.js.map" />
+    <Content Include="build\app\user\index.js.map" />
+    <Content Include="build\app\user\user.component.js.map" />
+    <Content Include="build\app\_directives\alert.component.js.map" />
+    <Content Include="build\app\_directives\index.js.map" />
+    <Content Include="build\app\_filter\index.js.map" />
+    <Content Include="build\app\_filter\user.pipe.js.map" />
+    <Content Include="build\app\_guards\auth.guard.js.map" />
+    <Content Include="build\app\_helpers\fake-backend.js.map" />
+    <Content Include="build\app\_helpers\index.js.map" />
+    <Content Include="build\app\_models\index.js.map" />
+    <Content Include="build\app\_models\user.js.map" />
+    <Content Include="build\app\_models\users.js.map" />
+    <Content Include="build\app\_services\alert.service.js.map" />
+    <Content Include="build\app\_services\authentication.service.js.map" />
+    <Content Include="build\app\_services\index.js.map" />
+    <Content Include="build\app\_services\user.service.js.map" />
+    <Content Include="build\app\_services\users.service.js.map" />
+    <Content Include="build\app\_shared\enum.js.map" />
+    <Content Include="build\app\_shared\errorhandler.js.map" />
+    <Content Include="build\app\_shared\global.js.map" />
+    <Content Include="build\app\_shared\search.component.js.map" />
+    <Content Include="assets\pug\blank.pug" />
+    <Content Include="assets\pug\cards.pug" />
+    <Content Include="assets\pug\charts.pug" />
+    <Content Include="assets\pug\forgot-password.pug" />
+    <Content Include="assets\pug\includes\css\core.pug" />
+    <Content Include="assets\pug\includes\css\custom.pug" />
+    <Content Include="assets\pug\includes\footer.pug" />
+    <Content Include="assets\pug\includes\js\core.pug" />
+    <Content Include="assets\pug\includes\js\custom.pug" />
+    <Content Include="assets\pug\includes\modals\logout.pug" />
+    <Content Include="assets\pug\includes\navbar.pug" />
+    <Content Include="assets\pug\includes\scroll-to-top.pug" />
+    <Content Include="assets\pug\index.pug" />
+    <Content Include="assets\pug\login.pug" />
+    <Content Include="assets\pug\navbar.pug" />
+    <Content Include="assets\pug\register.pug" />
+    <Content Include="assets\pug\tables.pug" />
+    <Content Include="assets\scss\navbar\_navbar_colors.scss" />
+    <Content Include="assets\scss\navbar\_navbar_fixed.scss" />
+    <Content Include="assets\scss\navbar\_navbar_global.scss" />
+    <Content Include="assets\scss\navbar\_navbar_static.scss" />
+    <Content Include="assets\scss\navbar\_navbar_toggle.scss" />
+    <Content Include="assets\scss\sb-admin.scss" />
+    <Content Include="assets\scss\_cards.scss" />
+    <Content Include="assets\scss\_footer.scss" />
+    <Content Include="assets\scss\_global.scss" />
+    <Content Include="assets\scss\_login.scss" />
+    <Content Include="assets\scss\_mixins.scss" />
+    <Content Include="assets\scss\_utilities.scss" />
+    <Content Include="assets\scss\_variables.scss" />
+    <Content Include="assets\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="assets\vendor\font-awesome\less\animated.less" />
+    <Content Include="assets\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="assets\vendor\font-awesome\less\core.less" />
+    <Content Include="assets\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="assets\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="assets\vendor\font-awesome\less\icons.less" />
+    <Content Include="assets\vendor\font-awesome\less\larger.less" />
+    <Content Include="assets\vendor\font-awesome\less\list.less" />
+    <Content Include="assets\vendor\font-awesome\less\mixins.less" />
+    <Content Include="assets\vendor\font-awesome\less\path.less" />
+    <Content Include="assets\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="assets\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="assets\vendor\font-awesome\less\stacked.less" />
+    <Content Include="assets\vendor\font-awesome\less\variables.less" />
+    <Content Include="assets\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="assets\vendor\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="DataModel\UserAgentBotData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserAgentBotData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataModel\UserAgentBotData.edmx.diagram">
+      <DependentUpon>UserAgentBotData.edmx</DependentUpon>
+    </Content>
+    <Content Include="build\app\admin\admin.component.js.map" />
+    <Content Include="build\app\admin\admin.module.js.map" />
+    <Content Include="build\app\admin\admin.routing.js.map" />
+    <Content Include="build\app\admin\agents\agents.component.js.map" />
+    <Content Include="build\app\admin\history\history.component.js.map" />
+    <Content Include="build\app\admin\index.js.map" />
+    <Content Include="build\app\admin\layouts\admin-header\admin-header.component.js.map" />
+    <Content Include="build\app\admin\layouts\admin-header\admin-header.component.spec.js.map" />
+    <Content Include="build\app\admin\layouts\admin-leftside\admin-leftside.component.js.map" />
+    <Content Include="build\app\forgotpassword\forgotpassword.component.js.map" />
+    <Content Include="build\app\forgotpassword\index.js.map" />
+    <None Include="Properties\PublishProfiles\MyQnAbotTest-Web-Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\UserAgentBot-Web-Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="systemjs.config.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CommandHandling\BackChannelMessageHandler.cs" />
+    <Compile Include="CommandHandling\CommandMessageHandler.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AgentController.cs" />
+    <Compile Include="Controllers\BaseAPIController.cs" />
+    <Compile Include="Controllers\CustomerAgentController.cs" />
+    <Compile Include="Controllers\ManageQuestionAnswerController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\UserAPIController.cs" />
+    <Compile Include="DataModel\CustomerAgentLog.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Department.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\LogMessage.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\QuestionAnswer.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\QuestionSet.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\QuizUserLog.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Roles.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserAgentBotData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAgentBotData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserAgentBotData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserAgentBotData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserAgentBotData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserInformation.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserLog.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\UserPendingRequest.cs">
+      <DependentUpon>UserAgentBotData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\QuestionTemplate.cs" />
+    <Compile Include="Dialogs\RootDialog.cs" />
+    <Compile Include="Extensions\ActivityExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MessageRouting\MessageRouterResultHandler.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Repository\AdminRepo.cs" />
+    <Compile Include="Repository\QuesAnsRepo.cs" />
+    <Compile Include="Repository\UserRepo.cs" />
+    <Compile Include="Repository\UtilityRepo.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Strings\ConversationText.fr.Designer.cs">
+      <DependentUpon>ConversationText.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Strings\ConversationText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConversationText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Utility.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\QuesAnswerModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="package.json" />
+    <Content Include="tsconfig.json" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings\ConversationText.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConversationText.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ConversationText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConversationText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\admin\account\account.component.ts" />
+    <TypeScriptCompile Include="app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="app\admin\agents\agents.component.ts" />
+    <TypeScriptCompile Include="app\admin\agenttest\agenttest.component.ts" />
+    <TypeScriptCompile Include="app\admin\analytics\analytics.component.ts" />
+    <TypeScriptCompile Include="app\admin\banned\banned.component.ts" />
+    <TypeScriptCompile Include="app\admin\department\department.component.ts" />
+    <TypeScriptCompile Include="app\admin\goals\goals.component.ts" />
+    <TypeScriptCompile Include="app\admin\history\history.component.ts" />
+    <TypeScriptCompile Include="app\admin\index.ts" />
+    <TypeScriptCompile Include="app\admin\layouts\admin-header\admin-header.component.spec.ts" />
+    <TypeScriptCompile Include="app\admin\layouts\admin-header\admin-header.component.ts" />
+    <TypeScriptCompile Include="app\admin\layouts\admin-leftside\admin-leftside.component.ts" />
+    <TypeScriptCompile Include="app\admin\monitor\monitor.component.ts" />
+    <TypeScriptCompile Include="app\admin\personal\personal.component.ts" />
+    <TypeScriptCompile Include="app\admin\quesanswer\addques.component.ts" />
+    <TypeScriptCompile Include="app\admin\quesanswer\index.ts" />
+    <TypeScriptCompile Include="app\admin\roles\roles.component.ts" />
+    <TypeScriptCompile Include="app\admin\routing\routing.component.ts" />
+    <TypeScriptCompile Include="app\admin\shortcuts\shortcuts.component.ts" />
+    <TypeScriptCompile Include="app\admin\triggers\triggers.component.ts" />
+    <TypeScriptCompile Include="app\admin\visitors\visitors.component.ts" />
+    <TypeScriptCompile Include="app\admin\widget\widget.component.ts" />
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\forgotpassword\forgotpassword.component.ts" />
+    <TypeScriptCompile Include="app\forgotpassword\index.ts" />
+    <TypeScriptCompile Include="app\home\home.component.ts" />
+    <TypeScriptCompile Include="app\home\index.ts" />
+    <TypeScriptCompile Include="app\login\index.ts" />
+    <TypeScriptCompile Include="app\login\login.component.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\register\index.ts" />
+    <TypeScriptCompile Include="app\register\register.component.ts" />
+    <TypeScriptCompile Include="app\user\index.ts" />
+    <TypeScriptCompile Include="app\user\user.component.ts" />
+    <TypeScriptCompile Include="app\_directives\alert.component.ts" />
+    <TypeScriptCompile Include="app\_directives\footer.component.ts" />
+    <TypeScriptCompile Include="app\_directives\header.component.ts" />
+    <TypeScriptCompile Include="app\_directives\index.ts" />
+    <TypeScriptCompile Include="app\_directives\logout.component.ts" />
+    <TypeScriptCompile Include="app\_filter\index.ts" />
+    <TypeScriptCompile Include="app\_filter\user.pipe.ts" />
+    <TypeScriptCompile Include="app\_guards\auth.guard.ts" />
+    <TypeScriptCompile Include="app\_helpers\fake-backend.ts" />
+    <TypeScriptCompile Include="app\_helpers\index.ts" />
+    <TypeScriptCompile Include="app\_models\index.ts" />
+    <TypeScriptCompile Include="app\_models\pendingagentassistant.ts" />
+    <TypeScriptCompile Include="app\_models\quesans.ts" />
+    <TypeScriptCompile Include="app\_models\user.ts" />
+    <TypeScriptCompile Include="app\_models\users.ts" />
+    <TypeScriptCompile Include="app\_services\alert.service.ts" />
+    <TypeScriptCompile Include="app\_services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\_services\index.ts" />
+    <TypeScriptCompile Include="app\_services\pendingassistant.service.ts" />
+    <TypeScriptCompile Include="app\_services\quesans.service.ts" />
+    <TypeScriptCompile Include="app\_services\user.service.ts" />
+    <TypeScriptCompile Include="app\_services\users.service.ts" />
+    <TypeScriptCompile Include="app\_shared\enum.ts" />
+    <TypeScriptCompile Include="app\_shared\errorhandler.ts" />
+    <TypeScriptCompile Include="app\_shared\global.ts" />
+    <TypeScriptCompile Include="app\_shared\search.component.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableMSDeployAppOffline>true</EnableMSDeployAppOffline>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3979/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,22 @@
+//{
+
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "outDir": "build/app",
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "lib": [ "es2015", "es2016", "dom" ]
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
+  ]
+}

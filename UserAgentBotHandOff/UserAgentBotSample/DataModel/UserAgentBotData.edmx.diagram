@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="008e44d08ddd497ebb7ef237ba82f512" Name="Diagram1">
+        <EntityTypeShape EntityType="UserAgentDBModel.CustomerAgentLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.Department" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.LogMessage" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.QuestionAnswer" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.QuestionSet" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.QuizUserLog" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.Roles" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.UserInformation" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.UserLog" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="UserAgentDBModel.UserPendingRequest" Width="1.5" PointX="5.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
