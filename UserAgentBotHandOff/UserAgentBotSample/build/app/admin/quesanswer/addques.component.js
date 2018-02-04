@@ -33,7 +33,7 @@ let QuesAnswerComponent = class QuesAnswerComponent {
     }
     LoadQAS() {
         this.indLoading = true;
-        this._qaService.get(global_1.Global.BASE_QAS_ENDPOINT)
+        this._qaService.get(global_1.Global.BASE_QAS_ENDPOINT + '/get')
             .subscribe(quesanswers => { this.quesanswers = quesanswers; this.indLoading = false; console.log('data', quesanswers); }
         //,error => this.msg = <any>error
         );
@@ -82,7 +82,7 @@ let QuesAnswerComponent = class QuesAnswerComponent {
         this.msg = "";
         switch (this.dbops) {
             case enum_1.DBOperation.create:
-                this._qaService.post(global_1.Global.BASE_QAS_ENDPOINT, formData._value).subscribe(data => {
+                this._qaService.post(global_1.Global.BASE_QAS_ENDPOINT + '/post', formData._value).subscribe(data => {
                     if (data == 1) {
                         this.msg = "Data successfully added.";
                         this.modal.dismiss();
@@ -97,7 +97,7 @@ let QuesAnswerComponent = class QuesAnswerComponent {
                 });
                 break;
             case enum_1.DBOperation.update:
-                this._qaService.put(global_1.Global.BASE_USER_ENDPOINT, formData._value.Id, formData._value).subscribe(data => {
+                this._qaService.put(global_1.Global.BASE_USER_ENDPOINT + '/put', formData._value.Id, formData._value).subscribe(data => {
                     if (data == 1) {
                         this.msg = "Data successfully updated.";
                         this.LoadQAS();
@@ -111,7 +111,7 @@ let QuesAnswerComponent = class QuesAnswerComponent {
                 });
                 break;
             case enum_1.DBOperation.delete:
-                this._qaService.delete(global_1.Global.BASE_USER_ENDPOINT, formData._value.Id).subscribe(data => {
+                this._qaService.delete(global_1.Global.BASE_USER_ENDPOINT + '/delete', formData._value.Id).subscribe(data => {
                     if (data == 1) {
                         this.msg = "Data successfully deleted.";
                         this.LoadQAS();

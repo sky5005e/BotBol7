@@ -18,51 +18,78 @@ let HomeComponent = class HomeComponent {
         this.chartData = [
             {
                 label: "Sessions",
-                data: [1e4, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451]
+                data: [8, 4, 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15, 8, 4] // 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15,12, 8, 24]
             }
         ];
-        this.chartLabels = ["Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13"];
+        this.chartLabels = [
+            "Jan 17", "Jan 18", "Jan 19", "Jan 20", "Jan 21", "Jan 22", "Jan 23", "Jan 24", "Jan 25", "Jan 26", "Jan 27", "Jan 28", "Jan 29", "Jan 30", "Jan 31"
+        ];
         this.chartOptions = {
-            scales: {
-                xAxes: [{
-                        time: {
-                            unit: 'date'
-                        },
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 7
-                        }
-                    }],
-                yAxes: [{
-                        ticks: {
-                            min: 0,
-                            max: 40000,
-                            maxTicksLimit: 5
-                        },
-                        gridLines: {
-                            color: "rgba(0, 0, 0, .125)",
-                        }
-                    }],
-            },
-            legend: {
-                display: false
-            }
-            //scales: {
-            //    yAxes: [{
-            //        ticks: {
-            //            beginAtZero: true
-            //        }
-            //    }]
-            //}
+            responsive: true
         };
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
+    //private chartOptions = {
+    //    scales: {
+    //        xAxes: [{
+    //            time: {
+    //                unit: 'date'
+    //            },
+    //            gridLines: {
+    //                display: false
+    //            },
+    //            ticks: {
+    //                maxTicksLimit: 7
+    //            }
+    //        }],
+    //        yAxes: [{
+    //            ticks: {
+    //                min: 0,
+    //                max: 40000,
+    //                maxTicksLimit: 5
+    //            },
+    //            gridLines: {
+    //                color: "rgba(0, 0, 0, .125)",
+    //            }
+    //        }],
+    //    },
+    //    legend: {
+    //        display: false
+    //    }
+    //    //scales: {
+    //    //    yAxes: [{
+    //    //        ticks: {
+    //    //            beginAtZero: true
+    //    //        }
+    //    //    }]
+    //    //}
+    //};
     onChartClick(event) {
         console.log(event);
     }
     ngOnInit() {
+        /*
+        this.chartLabels = Array.apply(null, new Array(30))
+            .map(function () {
+                return new Date();
+            })
+            .map(function (v, i) {
+                v.setDate(v.getDate() - i);
+                return v;
+            })
+            .map(function (v) {
+                var dd = v.getDate();
+                var mm = v.getMonth() + 1;
+                var yyyy = v.getFullYear();
+                if (dd < 10) { dd = '0' + dd }
+                if (mm < 10) { mm = '0' + mm }
+                v = mm + '/' + dd + '/' + yyyy;
+                return v;
+                // return this.formatDate(v);
+            })
+            .reverse();
+
+        */
         this.loadAllUsers();
     }
     deleteUser(id) {

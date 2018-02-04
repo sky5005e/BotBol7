@@ -24,13 +24,13 @@ let QuesAnsService = class QuesAnsService {
         this.options = new http_1.RequestOptions({ headers: this.headers });
     }
     getAll() {
-        return this.http.get('/api/managequestionanswer', this.jwt()).map((response) => response.json());
+        return this.http.get('/api/mqa', this.jwt()).map((response) => response.json());
     }
     getById(id) {
         return this.http.get('/api/users/' + id, this.jwt()).map((response) => response.json());
     }
     create(quesans) {
-        return this.http.post('api/managequestionanswer/post', quesans, this.options).map((response) => response.json());
+        return this.http.post('api/mqa/post', quesans, this.options).map((response) => response.json());
     }
     update(quesans) {
         return this.http.put('/api/users/' + quesans.QuesAnsId, quesans, this.jwt()).map((response) => response.json());

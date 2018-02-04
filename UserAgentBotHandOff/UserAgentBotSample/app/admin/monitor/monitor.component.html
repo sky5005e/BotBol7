@@ -7,7 +7,7 @@
                     <h5 class="pull-left">Website Analytics</h5>
                     <div class="resp-tabs-container">
                         <div class="card-body">
-                            <canvas baseChart
+                            <canvas *ngIf="chartdatashow" baseChart
                                     [chartType]="'line'"
                                     [datasets]="chartData"
                                     [labels]="chartLabels"

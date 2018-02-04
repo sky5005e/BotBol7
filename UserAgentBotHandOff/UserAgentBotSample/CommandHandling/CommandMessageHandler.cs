@@ -25,13 +25,13 @@ namespace UserAgentBot.CommandHandling
         public const string CommandRejectRequest = "reject";
         public const string CommandDisconnect = "disconnect";
 
-#if DEBUG // Commands for debugging
+//#if DEBUG // Commands for debugging
         public const string CommandDeleteAllRoutingData = "reset";
         public const string CommandListAllParties = "list parties";
         public const string CommandListPendingRequests = "list requests";
         public const string CommandListConnections = "list conversations";
         public const string CommandListLastMessageRouterResults = "list results";
-#endif
+//#endif
     }
 
     /// <summary>
@@ -182,7 +182,7 @@ namespace UserAgentBot.CommandHandling
 
 
                     #region Implementation of debugging commands
-#if DEBUG
+//#if DEBUG
 
                     case //Commands.CommandDeleteAllRoutingData:
                         string command when (command.StartsWith(Commands.CommandDeleteAllRoutingData)):
@@ -273,7 +273,7 @@ namespace UserAgentBot.CommandHandling
                         replyActivity = activity.CreateReply($"{(string.IsNullOrEmpty(resultsAsString) ? "No results" : resultsAsString)}");
                         wasHandled = true;
                         break;
-#endif
+//#endif
                     #endregion
 
                     default:
@@ -503,7 +503,7 @@ namespace UserAgentBot.CommandHandling
                         Type = ActionTypes.PostBack,
                         Value = $"{Commands.CommandKeyword} {Commands.CommandDisconnect}"
                     }
-#if DEBUG
+//#if DEBUG
                     ,
                     new CardAction()
                     {
@@ -535,7 +535,7 @@ namespace UserAgentBot.CommandHandling
                         Type = ActionTypes.PostBack,
                         Value = $"{Commands.CommandKeyword} {Commands.CommandListLastMessageRouterResults}"
                     }
-#endif
+//#endif
                 }
             };
 
@@ -543,7 +543,7 @@ namespace UserAgentBot.CommandHandling
             return messageActivity;
         }
 
-#if DEBUG
+//#if DEBUG
         /// <summary>
         /// For debugging. Creates a string containing all the parties in the given list.
         /// </summary>
@@ -563,6 +563,6 @@ namespace UserAgentBot.CommandHandling
 
             return partiesAsString;
         }
-#endif
+//#endif
     }
 }

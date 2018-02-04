@@ -13,31 +13,35 @@ using UserAgentBot.Controllers;
 namespace UserAgentBot.Controllers
 {
     //[Authorize]
-    public class QASAPIController : BaseAPIController
+    [RoutePrefix("api/MQA")]
+
+    public class ManageQuestionAnswerController : BaseAPIController
     {
+        [Route("get")]
         public HttpResponseMessage Get()
         {
             var result = List();
             return ToJson(result); //ErrorJson(List());//ToJson(List());
         }
-
         private List<QuestionAnswer> List()
         {
             return DB.QuestionAnswer.ToList();
         }
-
+        [Route("post")]
         public HttpResponseMessage Post([FromBody]QuestionAnswer value)
         {
             value.created = DateTime.UtcNow;
             DB.QuestionAnswer.Add(value);
             return ToJson(DB.SaveChanges());
         }
+        [Route("put")]
 
         public HttpResponseMessage Put(int id, [FromBody]QuestionAnswer value)
         {
             DB.Entry(value).State = EntityState.Modified;
             return ToJson(DB.SaveChanges());
         }
+        [Route("delete")]
         public HttpResponseMessage Delete(int id)
         {
             DB.QuestionAnswer.Remove(DB.QuestionAnswer.FirstOrDefault(x => x.QuesAnsId == id));

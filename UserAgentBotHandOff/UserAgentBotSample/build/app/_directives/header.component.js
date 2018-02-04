@@ -22,7 +22,7 @@ let AdminHeaderComponent = class AdminHeaderComponent {
         this.LoadAll();
     }
     LoadAll() {
-        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT)
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "/get")
             .subscribe(PendingAgentAssitants => { this.PendingAgentAssitants = PendingAgentAssitants; console.log('data', PendingAgentAssitants); });
     }
 };

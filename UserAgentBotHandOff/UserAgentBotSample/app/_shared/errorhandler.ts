@@ -9,8 +9,9 @@ export default class AppErrorHandler extends ErrorHandler {
     }
 
     handleError(error: any) {
-        debugger;
-        alert(error);
+        //debugger;
+        //alert(error);
+        console.log("error", error);
         super.handleError(error);
     }
 }

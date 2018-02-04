@@ -3,8 +3,45 @@
 <div class="content-wrapper">
     <div class="container" style="margin-top:50px">
 
-        <div id="bot-chat-container" #botWindow class="wc-narrow"></div>
+        <!--<section class="example">
+        <h2>Type a color into the Web Chat!</h2>
+        <button (click)="postButtonMessage()" style="height: 60px; margin-left: 80px; margin-top: 20px; padding: 20px; width: 120px;">Click Me!</button>
+        <button (click)="postButtonMessage2()" style="height: 60px; margin-left: 80px; margin-top: 20px; padding: 20px; width: 120px;">Click Me!</button>
+
+    </section>
+    <div id="chats">
+
     </div>
+    <div id="messages"></div>
+
+    <hr />-->
+        <!--<app-chat-window></app-chat-window>-->
+
+        <div class="chat-sidebar">
+            <h5>Human Assistant request :</h5>
+            <div *ngFor="let pcareq of PendingAgentAssitants">
+                <div class="sidebar-name">
+
+                    <a class="dropdown-item" (click)="DisplayChat(pcareq.userID, pcareq.userName)">
+                        <span class="text-success">
+                            <strong>
+                                <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
+                            </strong>
+                        </span>
+                        <div class="svd">{{pcareq.created |date:'h:mma'}}</div>
+                        <div class="svd" title="">{{ pcareq.userName }}.</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div id="bot-container">
+
 </div>
 <app-admin-footer></app-admin-footer>
 <app-logout></app-logout>

@@ -7,4 +7,5 @@ __export(require("./alert.component"));
 __export(require("./header.component"));
 __export(require("./footer.component"));
 __export(require("./logout.component"));
+__export(require("./chatwindow.component"));
 //# sourceMappingURL=index.js.map

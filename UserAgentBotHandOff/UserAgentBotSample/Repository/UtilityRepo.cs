@@ -36,7 +36,14 @@ namespace UserAgentBot.Repository
         {
             using (var DB = new UserAgentDBEntities())
             {
-                return DB.UserPendingRequest.Where(q => q.IsAttended == false).ToList();
+                return DB.UserPendingRequest.Where(q => q.IsAttended == false).OrderByDescending(o=>o.Id).Take(5).ToList();
+            }
+        }
+        public static List<UserPendingRequest> GetMonitoringResultAsync(DateTime dt)
+        {
+            using (var DB = new UserAgentDBEntities())
+            {
+                return DB.UserPendingRequest.Where(q => q.created >= dt).ToList();
             }
         }
         public static async Task<int> LogPendingRequestAsync(Activity activity, string ip, string deviceType)
@@ -65,6 +72,31 @@ namespace UserAgentBot.Repository
             }
 
         }
+
+        public static async Task<int> UpdatedUserAttendedByAsync(Activity activity)
+        {
+
+            string commandAccept = activity.Text;
+            if (!string.IsNullOrEmpty(commandAccept) && commandAccept.Contains("command accept "))
+            {
+                // Instantiate the BotData dbContext
+                using (var DB = new UserAgentDBEntities())
+                {
+                    // Add the UserPendingRequest object to UserPendingRequests
+                    var user = DB.UserPendingRequest.Where(q => commandAccept.Contains(q.UserID) && q.IsAttended == false).FirstOrDefault();
+                    if (user != null)
+                    {
+                        user.IsAttended = true;
+                        user.AttendedAgent = activity.From.Name;
+                        user.MessageID = activity.Id;
+                    }
+                    // Save the changes to the database
+                    return await DB.SaveChangesAsync();
+                }
+            }
+            return await Task.FromResult<int>(0);
+        }
+
         public static async Task<int> LogCustomerAgentChatAsync(Activity activity)
         {
             // *************************

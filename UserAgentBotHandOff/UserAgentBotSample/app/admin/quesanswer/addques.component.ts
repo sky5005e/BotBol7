@@ -41,7 +41,7 @@ export class QuesAnswerComponent implements OnInit {
 
     LoadQAS(): void {
         this.indLoading = true;
-        this._qaService.get(Global.BASE_QAS_ENDPOINT)
+        this._qaService.get(Global.BASE_QAS_ENDPOINT+'/get')
             .subscribe(quesanswers => { this.quesanswers = quesanswers; this.indLoading = false; console.log('data', quesanswers); }
                //,error => this.msg = <any>error
                
@@ -97,7 +97,7 @@ export class QuesAnswerComponent implements OnInit {
 
         switch (this.dbops) {
             case DBOperation.create:
-                this._qaService.post(Global.BASE_QAS_ENDPOINT, formData._value).subscribe(
+                this._qaService.post(Global.BASE_QAS_ENDPOINT+'/post', formData._value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -117,7 +117,7 @@ export class QuesAnswerComponent implements OnInit {
                 );
                 break;
             case DBOperation.update:
-                this._qaService.put(Global.BASE_USER_ENDPOINT, formData._value.Id, formData._value).subscribe(
+                this._qaService.put(Global.BASE_USER_ENDPOINT +'/put', formData._value.Id, formData._value).subscribe(
                     data => {
                         if (data == 1) //Success
                         {
@@ -136,7 +136,7 @@ export class QuesAnswerComponent implements OnInit {
                 );
                 break;
             case DBOperation.delete:
-                this._qaService.delete(Global.BASE_USER_ENDPOINT, formData._value.Id).subscribe(
+                this._qaService.delete(Global.BASE_USER_ENDPOINT +'/delete', formData._value.Id).subscribe(
                     data => {
                         if (data == 1) //Success
                         {

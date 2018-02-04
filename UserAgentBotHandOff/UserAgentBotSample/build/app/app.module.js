@@ -24,13 +24,13 @@ const index_2 = require("./_directives/index");
 const index_3 = require("./_directives/index");
 const index_4 = require("./_directives/index");
 const index_5 = require("./_directives/index");
+const index_6 = require("./_directives/index");
 const auth_guard_1 = require("./_guards/auth.guard");
-const index_6 = require("./_services/index");
-const index_7 = require("./home/index");
-const index_8 = require("./login/index");
-const index_9 = require("./register/index");
-const index_10 = require("./forgotpassword/index");
-const index_11 = require("./admin/index");
+const index_7 = require("./_services/index");
+const index_8 = require("./home/index");
+const index_9 = require("./login/index");
+const index_10 = require("./register/index");
+const index_11 = require("./forgotpassword/index");
 const index_12 = require("./admin/index");
 const index_13 = require("./admin/index");
 const index_14 = require("./admin/index");
@@ -47,11 +47,12 @@ const index_24 = require("./admin/index");
 const index_25 = require("./admin/index");
 const index_26 = require("./admin/index");
 const index_27 = require("./admin/index");
-const index_28 = require("./user/index");
-const index_29 = require("./_filter/index");
+const index_28 = require("./admin/index");
+const index_29 = require("./user/index");
+const index_30 = require("./_filter/index");
 const search_component_1 = require("./_shared/search.component");
 const errorhandler_1 = require("./_shared/errorhandler");
-const index_30 = require("./admin/quesanswer/index");
+const index_31 = require("./admin/quesanswer/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -71,42 +72,43 @@ AppModule = __decorate([
             index_2.AlertComponent,
             index_3.AdminHeaderComponent,
             index_4.AdminFooterComponent,
-            index_7.HomeComponent,
-            index_8.LoginComponent,
-            index_9.RegisterComponent,
-            index_10.ForgotPasswordComponent,
-            index_28.UsersComponent,
-            index_29.UserFilterPipe,
+            index_8.HomeComponent,
+            index_9.LoginComponent,
+            index_10.RegisterComponent,
+            index_11.ForgotPasswordComponent,
+            index_29.UsersComponent,
+            index_30.UserFilterPipe,
             search_component_1.SearchComponent,
-            index_5.LogoutComponent,
-            index_30.QuesAnswerComponent,
-            index_11.AdminComponent,
-            index_12.AccountComponent,
-            index_13.AgentComponent,
-            index_14.AnalyticsComponent,
-            index_15.BannedComponent,
-            index_16.DepartmentComponent,
-            index_17.GoalsComponent,
-            index_18.HistoryComponent,
-            index_19.PersonalComponent,
-            index_20.RolesComponent,
-            index_21.RoutingComponent,
-            index_22.ShortcutsComponent,
-            index_23.TriggersComponent,
-            index_24.VisitorsComponent,
-            index_25.WidgetComponent,
-            index_26.MonitorComponent,
-            index_27.AgentTestComponent
+            index_6.LogoutComponent,
+            index_31.QuesAnswerComponent,
+            index_12.AdminComponent,
+            index_13.AccountComponent,
+            index_14.AgentComponent,
+            index_15.AnalyticsComponent,
+            index_16.BannedComponent,
+            index_17.DepartmentComponent,
+            index_18.GoalsComponent,
+            index_19.HistoryComponent,
+            index_20.PersonalComponent,
+            index_21.RolesComponent,
+            index_22.RoutingComponent,
+            index_23.ShortcutsComponent,
+            index_24.TriggersComponent,
+            index_25.VisitorsComponent,
+            index_26.WidgetComponent,
+            index_27.MonitorComponent,
+            index_5.ChartWindowComponent,
+            index_28.AgentTestComponent
         ],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' },
             { provide: core_1.ErrorHandler, useClass: errorhandler_1.default },
             auth_guard_1.AuthGuard,
-            index_6.AlertService,
-            index_6.AuthenticationService,
-            index_6.UserService,
-            index_6.UsersService,
-            index_6.QuesAnsService,
-            index_6.PendingAssistantService,
+            index_7.AlertService,
+            index_7.AuthenticationService,
+            index_7.UserService,
+            index_7.UsersService,
+            index_7.QuesAnsService,
+            index_7.PendingAssistantService,
             // providers used to create fake backend
             index_1.fakeBackendProvider,
             testing_1.MockBackend,

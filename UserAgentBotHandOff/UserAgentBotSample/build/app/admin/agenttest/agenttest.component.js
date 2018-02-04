@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-const botframework_webchat_1 = require("botframework-webchat");
+const index_1 = require("../../_services/index");
+const global_1 = require("../../_shared/global");
 let AgentTestComponent = class AgentTestComponent {
-    constructor() {
+    constructor(paService) {
+        this.paService = paService;
+        this.PendingAgentAssitants = [];
+        this.showpopup = false;
         this.model = {
             "userId": "E2LVkp79VXo",
             "userName": "AgentSky",
@@ -27,24 +31,223 @@ let AgentTestComponent = class AgentTestComponent {
             "useLatestWebChat": false,
             "token": ""
         };
-        this.BotChatGoesHere = document.getElementById('BotChatGoesHere');
+        this.chats = document.getElementById("chats");
+        this.messages = document.getElementById("messages");
+        //this variable represents the total number of popups can be displayed according to the viewport width
+        this.total_popups = 0;
+        //arrays of popups ids
+        this.popups = [];
+        setInterval(() => { this.LoadAll(); }, 60 * 1000);
+    }
+    LoadAll() {
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "/get")
+            .subscribe(PendingAgentAssitants => { this.PendingAgentAssitants = PendingAgentAssitants; console.log('data', PendingAgentAssitants); });
     }
     ngOnInit() {
-        this.direct_line_secret = '35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U';
-        this.user_id = '106';
-        this.name = 'Agent_sky';
-        botframework_webchat_1.App({
-            directLine: {
-                secret: this.model.secret,
-                token: this.model.token,
-                domain: this.model.directLineUrl,
-                webSocket: false
-            },
-            user: { id: this.model.userId, name: this.model.userName },
-            bot: { id: this.model.botId, name: this.model.botName },
-            resize: 'window',
-            locale: 'en'
-        }, this.botWindowElement.nativeElement);
+        //App({
+        //    directLine: {
+        //        secret: this.model.secret,
+        //        token: this.model.token,
+        //        domain: this.model.directLineUrl,
+        //        webSocket: false
+        //    },
+        //    user: { id: this.model.userId, name: this.model.userName },
+        //    bot: { id: this.model.botId, name: this.model.botName },
+        //    resize: 'window',
+        //    locale: 'en'
+        //}, this.botWindowElement.nativeElement);
+        this.LoadAll();
+    }
+    /*
+    directLine = new DirectLine({
+        secret: this.model.secret,
+        token: this.model.token,
+        domain: this.model.directLineUrl,
+        webSocket: false
+    });*/
+    /*
+    postButtonMessage() {
+        //this.createIframe('test12');
+
+        const inputs = document.getElementsByClassName('wc-shellinput')[0] as HTMLInputElement;
+        inputs.focus();
+        inputs.value = 'Hi Hello from button click ';
+
+        //inputs.form.submit();
+
+        const wcsend = document.getElementsByClassName('wc-send')[0] as HTMLButtonElement;
+
+
+        setTimeout(() => {
+            wcsend.focus();
+            wcsend.click();
+
+        }
+            , 8 * 1000);
+        
+    }
+    postButtonMessage2() {
+        
+        const wcsend = document.getElementsByClassName('wc-send')[0] as HTMLButtonElement;
+
+
+        setTimeout(() => {
+            wcsend.focus();
+            wcsend.click();
+
+        }
+            , 8 * 1000);
+
+       
+    }
+
+    commandRequestUser() {
+
+        this.directLine.postActivity({
+            from: { id: this.model.userId, name: this.model.userName }, // required (from.name is optional)
+            type: 'message',
+            text: 'command list requests'
+        })
+            .subscribe(function (res) {
+                alert(3);
+                console.log("data", res);
+                
+            });
+    }
+
+    sendToBot(id: string, conversationId: string) {
+        const iframe = (document.getElementById(id) as HTMLIFrameElement).contentWindow;
+        console.log("iframe", id);
+       // var doc = iframe.document;// || iframe.document;
+
+        //const inputs = doc.getElementsByClassName('wc-shellinput')[0] as HTMLInputElement;//').innerText
+        debugger;
+       // inputs.focus();
+       // inputs.value = 'Hello from server to  Iframe';
+        //inputs.form.submit();
+
+       // const wcsend = document.getElementsByClassName('wc-send')[0] as HTMLButtonElement;
+
+
+      //  setTimeout(() => {
+           // wcsend.focus();
+           // wcsend.click();
+
+      //  }
+      //      , 8 * 1000);
+
+
+        // iframe.postMessage( conversationId );//, window.location.origin);
+
+    }
+    
+    */
+    //this function can remove a array element.
+    ArrayRemove(array, from, to) {
+        var rest = array.slice((to || from) + 1 || array.length);
+        array.length = from < 0 ? array.length + from : from;
+        return array.push.apply(array, rest);
+    }
+    ;
+    //this is used to close a popup
+    close_popup(id) {
+        debugger;
+        for (var iii = 0; iii < this.popups.length; iii++) {
+            if (id == this.popups[iii]) {
+                this.ArrayRemove(this.popups, iii, 0);
+                document.getElementById(id).style.display = "none";
+                this.calculate_popups();
+                return;
+            }
+        }
+    }
+    //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+    display_popups() {
+        var right = 220;
+        var iii = 0;
+        for (iii; iii < this.total_popups; iii++) {
+            if (this.popups[iii] != undefined) {
+                var element = document.getElementById(this.popups[iii]);
+                element.style.right = right + "px";
+                right = right + 320;
+                element.style.display = "block";
+            }
+        }
+        for (var jjj = iii; jjj < this.popups.length; jjj++) {
+            var element = document.getElementById(this.popups[jjj]);
+            element.style.display = "none";
+        }
+    }
+    DisplayChat(id, name) {
+        console.log(id);
+        console.log(name);
+        for (var iii = 0; iii < this.popups.length; iii++) {
+            //already registered. Bring it to front.
+            if (id == this.popups[iii]) {
+                this.ArrayRemove(this.popups, iii, 0);
+                this.popups.unshift(id);
+                this.calculate_popups();
+                return;
+            }
+        }
+        // var element = '<div class="popup-box chat-popup" id="' + id + '">';
+        // element = element + '<div class="popup-head">';
+        //element = element + '<div class="popup-head-left">' + name + '</div>';
+        //element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\'' + id + '\');">&#10005;</a></div>';
+        //element = element + '<div style="clear: both"></div></div><div class="popup-messages"></div></div>';
+        //  document.getElementById("bot-container").innerHTML = document.getElementById("bot-container").innerHTML + element;
+        const divElement = document.createElement('div');
+        divElement.classList.add('popup-box', 'chat-popup');
+        divElement.id = id;
+        const ifid = `botchat_${id}`;
+        const iframe = document.createElement('iframe');
+        iframe.id = ifid;
+        iframe.src = 'https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U&userId=E2LVkp79VXo&userName=AgentSky';
+        iframe.width = "320";
+        iframe.height = "360";
+        iframe.onload = (event) => {
+            //this.sendToBot(id, conversationId);
+            //this.AcceptUser(ifid);
+        };
+        const divElementMsg = document.createElement('div');
+        //divElement.classList.add('popup-box', 'chat-popup');
+        //divElement.id = id;
+        divElementMsg.innerHTML = `User : ${name} <br/> Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea width='100%'>command accept ${id}</textarea><br/>  `;
+        divElement.appendChild(divElementMsg);
+        divElement.appendChild(iframe);
+        document.getElementById("bot-container").appendChild(divElement);
+        this.popups.unshift(id);
+        this.calculate_popups();
+    }
+    //calculate the total number of popups suitable and then populate the toatal_popups variable.
+    calculate_popups() {
+        let width = window.innerWidth;
+        if (width < 540) {
+            this.total_popups = 0;
+        }
+        else {
+            width = width - 200;
+            //320 is width of a single popup box
+            this.total_popups = width / 320;
+        }
+        this.display_popups();
+    }
+    AcceptUser(id) {
+        if (id != "") {
+            debugger;
+            const iframe = document.getElementById(id).contentWindow;
+            console.log("iframe", id);
+            var doc = iframe.document; // || iframe.document;
+            debugger;
+            const inputs = doc.getElementsByClassName('wc-shellinput')[0]; //').innerText
+            inputs.focus();
+            inputs.value = 'Hello from server to  Iframe';
+            inputs.form.submit();
+            const wcsend = document.getElementsByClassName('wc-send')[0];
+            setTimeout(() => {
+                wcsend.click();
+            }, 8 * 1000);
+        }
     }
 };
 __decorate([
@@ -55,23 +258,8 @@ AgentTestComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: '/app/admin/agenttest/agenttest.component.html'
-    })
+    }),
+    __metadata("design:paramtypes", [index_1.PendingAssistantService])
 ], AgentTestComponent);
 exports.AgentTestComponent = AgentTestComponent;
-//import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-//import { App } from "botframework-webchat";
-//@Component({
-//    selector: 'app-root',
-//    template: `<div id="bot-chat-container" #botWindow></div>`,
-//})
-//export class AgentTestComponent implements OnInit {
-//    @ViewChild("botWindow") botWindowElement: ElementRef;
-//    ngOnInit(): void {
-//        App({
-//            directLine: { secret: 'secret goes here' },
-//            user: { id: 'user' },
-//            bot: { id: 'bot' },
-//        }, this.botWindowElement.nativeElement)
-//    }
-//}
 //# sourceMappingURL=agenttest.component.js.map

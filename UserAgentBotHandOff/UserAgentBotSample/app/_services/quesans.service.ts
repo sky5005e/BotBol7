@@ -19,7 +19,7 @@ export class QuesAnsService {
     }
 
     getAll() {
-        return this.http.get('/api/managequestionanswer', this.jwt()).map((response: Response) => response.json());
+        return this.http.get('/api/mqa', this.jwt()).map((response: Response) => response.json());
     }
 
     getById(id: number) {
@@ -27,7 +27,7 @@ export class QuesAnsService {
     }
 
     create(quesans: QuesAns) {
-        return this.http.post('api/managequestionanswer/post', quesans, this.options).map((response: Response) => response.json());
+        return this.http.post('api/mqa/post', quesans, this.options).map((response: Response) => response.json());
     }
 
     update(quesans: QuesAns) {

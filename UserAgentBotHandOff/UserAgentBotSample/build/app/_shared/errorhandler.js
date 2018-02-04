@@ -8,8 +8,9 @@ class AppErrorHandler extends core_1.ErrorHandler {
         super(true);
     }
     handleError(error) {
-        debugger;
-        alert(error);
+        //debugger;
+        //alert(error);
+        console.log("error", error);
         super.handleError(error);
     }
 }

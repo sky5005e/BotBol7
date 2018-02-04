@@ -189,6 +189,7 @@
     <Content Include="app\register\register.component.html" />
     <Content Include="app\user\user.component.html" />
     <Content Include="app\_directives\alert.component.html" />
+    <Content Include="app\_directives\chatwindow.component.html" />
     <Content Include="app\_directives\footer.component.html" />
     <Content Include="app\_directives\header.component.html" />
     <Content Include="app\_directives\logout.component.html" />
@@ -634,6 +635,7 @@
     <TypeScriptCompile Include="app\user\index.ts" />
     <TypeScriptCompile Include="app\user\user.component.ts" />
     <TypeScriptCompile Include="app\_directives\alert.component.ts" />
+    <TypeScriptCompile Include="app\_directives\chatwindow.component.ts" />
     <TypeScriptCompile Include="app\_directives\footer.component.ts" />
     <TypeScriptCompile Include="app\_directives\header.component.ts" />
     <TypeScriptCompile Include="app\_directives\index.ts" />

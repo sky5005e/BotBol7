@@ -29,7 +29,8 @@
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             'ng2-bs3-modal': 'node_modules/ng2-bs3-modal',
             'ng2-charts': 'node_modules/ng2-charts',
-            'botframework-webchat': 'node_modules/botframework-webchat'
+            'botframework-webchat': 'node_modules/botframework-webchat',
+            "botframework-directlinejs": 'node_modules/botframework-directlinejs',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -42,7 +43,8 @@
             ,
             'ng2-bs3-modal': { main: '/bundles/ng2-bs3-modal.js', defaultExtension: 'js' },
             'ng2-charts': { main: 'ng2-charts.js', defaultExtension: 'js' },
-            'botframework-webchat': { main: 'botchat.js', defaultExtension: 'js' }
+            'botframework-webchat': { main: 'botchat.js', defaultExtension: 'js' },
+            'botframework-directlinejs': { main: 'directLine.js', defaultExtension: 'js' }
 
         }
     });

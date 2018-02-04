@@ -53,6 +53,8 @@ namespace UserAgentBot.Controllers
             var current = System.Web.HttpContext.Current;
             var ip = GetUserIP(current);
 
+            await Repository.UtilityRepo.UpdatedUserAttendedByAsync(activity);
+
             if (activity.Locale != null)
             {
                 ConversationText.Culture = new CultureInfo(activity.Locale);

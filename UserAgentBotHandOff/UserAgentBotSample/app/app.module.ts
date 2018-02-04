@@ -21,6 +21,8 @@ import { routing }        from './app.routing';
 import { AlertComponent } from './_directives/index';
 import { AdminHeaderComponent } from './_directives/index';
 import { AdminFooterComponent } from './_directives/index';
+import { ChartWindowComponent } from './_directives/index';
+
 import { LogoutComponent } from './_directives/index';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertService, AuthenticationService, UserService, UsersService, QuesAnsService, PendingAssistantService } from './_services/index';
@@ -98,7 +100,9 @@ import { QuesAnswerComponent } from './admin/quesanswer/index';
         VisitorsComponent,
         WidgetComponent,
         MonitorComponent,
+        ChartWindowComponent,
         AgentTestComponent
+
 
     ],
    

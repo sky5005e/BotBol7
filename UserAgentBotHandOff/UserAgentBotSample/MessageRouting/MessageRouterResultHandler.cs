@@ -24,9 +24,9 @@ namespace UserAgentBot.MessageRouting
                 throw new ArgumentNullException($"The given result ({nameof(messageRouterResult)}) is null");
             }
 
-        #if DEBUG
+        //#if DEBUG
             WebApiConfig.MessageRouterManager.RoutingDataManager.AddMessageRouterResult(messageRouterResult);
-        #endif
+        //#endif
 
             string message = string.Empty;
 
