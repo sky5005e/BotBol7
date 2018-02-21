@@ -45,8 +45,10 @@ namespace UserAgentBot.Controllers
         /// </summary>
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
         {
-            
-           // var t = System.Web.HttpContext.Current.Request.UserHostAddress;
+            //await Repository.UtilityRepo.LogMsgAsync("activity id" + activity.From.Id);
+            //await Repository.UtilityRepo.LogMsgAsync("activity from" + activity.From.Name);
+            //await Repository.UtilityRepo.LogMsgAsync("activity channel" + activity.ChannelId);
+            // var t = System.Web.HttpContext.Current.Request.UserHostAddress;
             //var CallerIp = System.Web.HttpContext.Current.Request.UserHostAddress;
             var CallerAgent = System.Web.HttpContext.Current.Request.UserAgent;
             //var CalledUrl = System.Web.HttpContext.Current.Request.Url.OriginalString;
@@ -99,18 +101,30 @@ namespace UserAgentBot.Controllers
                             {
                                 await Repository.UtilityRepo.LogPendingRequestAsync(activity, ip, CallerAgent);
                             }
-                            catch(Exception ex)
+                            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+                            {
+                                foreach (var eve in e.EntityValidationErrors)
+                                {
+
+                                    await Repository.UtilityRepo.LogMsgAsync(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                        eve.Entry.Entity.GetType().Name, eve.Entry.State));
+                                    foreach (var ve in eve.ValidationErrors)
+                                    {
+                                        await Repository.UtilityRepo.LogMsgAsync(string.Format("- Property: \"{0}\", Error: \"{1}\"",
+                                            ve.PropertyName, ve.ErrorMessage));
+                                    }
+                                }
+                                //throw;
+                            }
+                            catch (Exception ex)
                             {
                                 await Repository.UtilityRepo.LogMsgAsync("Eror on human request : " + ex.Message);
-
                             }
-
                         }
                         else
                         {
                             try
                             {
-
                                 await Repository.UtilityRepo.LogRequestMessageAsync(activity);
                                 // Call 
                                 await Conversation.SendAsync(activity, () => new RootDialog());
@@ -124,8 +138,7 @@ namespace UserAgentBot.Controllers
                                     $"Completed Steps: {string.Join(", ", fcEx.Completed)}");
 
                                 await Repository.UtilityRepo.LogMsgAsync("reply : " + reply.Text);
-
-
+                                
                                 await connector.Conversations.ReplyToActivityAsync(reply);
                             }
                             catch (FormCanceledException fcEx)

@@ -9,4 +9,7 @@ __export(require("./user.service"));
 __export(require("./users.service"));
 __export(require("./quesans.service"));
 __export(require("./pendingassistant.service"));
+__export(require("./file.service"));
+__export(require("./department.service"));
+__export(require("./role.service"));
 //# sourceMappingURL=index.js.map

@@ -88,4 +88,10 @@ export class QuesAnsService {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
     }
+
+    PostImage(url: string, formdata: any, options: any): Observable<any> {
+        return this.http.post(url, formdata, options).map((res) => res.json());
+    }
+
+
 }

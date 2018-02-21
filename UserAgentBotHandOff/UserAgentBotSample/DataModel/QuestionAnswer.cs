@@ -18,5 +18,7 @@ namespace UserAgentBot.DataModel
         public string QuestionDesc { get; set; }
         public string AnswerDesc { get; set; }
         public System.DateTime created { get; set; }
+        public string FilePath { get; set; }
+        public string FileName { get; set; }
     }
 }

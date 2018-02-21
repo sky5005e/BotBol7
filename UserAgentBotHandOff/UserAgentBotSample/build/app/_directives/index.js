@@ -8,4 +8,5 @@ __export(require("./header.component"));
 __export(require("./footer.component"));
 __export(require("./logout.component"));
 __export(require("./chatwindow.component"));
+__export(require("./fileupload.component"));
 //# sourceMappingURL=index.js.map

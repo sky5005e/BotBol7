@@ -44,7 +44,7 @@ namespace UserAgentBot.Dialogs
         {
             IMessageActivity messageActivity = await result;
             string message = messageActivity.Text;
-            
+
             if (!string.IsNullOrEmpty(message))
             {
                 if (message.ToLower().Contains(MessagesController.CommandRequestConnection))
@@ -66,7 +66,6 @@ namespace UserAgentBot.Dialogs
                         var form = new FormDialog<QuestionTemplate>(new QuestionTemplate(message), QuestionTemplate.BuildPlaceForm, FormOptions.PromptInStart);
                         context.Call(form, QuestionTemplate_Callback);
 
-
                         await Task.CompletedTask;
                     }
                     else
@@ -74,10 +73,21 @@ namespace UserAgentBot.Dialogs
                         if (answers != null && answers.Count > 0)
                         {
                             messageActivity.Text = $"{answers[0].AnswerDesc}";
+                            if (!string.IsNullOrEmpty(answers[0].FilePath))
+                            {
+                                messageActivity.Attachments = new List<Attachment> {
+                                    Utils.Utility.GetLocalAttachment(answers[0].FilePath, answers[0].FileName)
+                                };
+                            }
                         }
                         else
                         {
-                            messageActivity.Text = $"Sorry didn't understand. \n\rType \"{Commands.CommandKeyword} {Commands.CommandListOptions}\" to see all command options.\n\rType \"{MessagesController.CommandRequestConnection}\" to initiate conversation with human agent.";
+                            messageActivity.Text = $"Sorry didn't understand. " +
+                                //$"\n\rType \"{Commands.CommandKeyword} {Commands.CommandListOptions}\" to see all command options." +
+                                $"\n\rType \"{MessagesController.CommandRequestConnection}\" to initiate conversation with human agent.";
+                            messageActivity.Attachments = new List<Attachment> {
+                                Utils.Utility.GetInternetAttachment()
+                            };
                         }
                         //$"{ConversationText.EchoMessage}: {message}\n\rType \"{Commands.CommandKeyword} {Commands.CommandListOptions}\" to see all command options.\n\rType \"{MessagesController.CommandRequestConnection}\" to initiate conversation with human agent.";
                         await context.PostAsync(messageActivity);
@@ -111,6 +121,7 @@ namespace UserAgentBot.Dialogs
             var answer = new Repository.QuesAnsRepo().GetList(ques);
             if (answer != null && answer.Count > 0)
             {
+                
                 //if (answer.Count == 1)
                 return $"{answer[0].AnswerDesc}";
                 //else
@@ -118,7 +129,9 @@ namespace UserAgentBot.Dialogs
             }
             else
             {
-                return $"Sorry didn't understand. \n\rType \"{Commands.CommandKeyword} {Commands.CommandListOptions}\" to see all command options.\n\rType \"{MessagesController.CommandRequestConnection}\" to initiate conversation with human agent.";
+                return $"Sorry didn't understand. " +
+                    //$"\n\rType \"{Commands.CommandKeyword} {Commands.CommandListOptions}\" to see all command options." +
+                    $"\n\rType \"{MessagesController.CommandRequestConnection}\" to initiate conversation with human agent.";
             }
         }
 

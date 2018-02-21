@@ -8,6 +8,9 @@ import { PendingAssistantService } from '../../_services/index';
 
 import { Global } from '../../_shared/global';
 
+import 'assets/js/skyexternal.js'
+
+declare var skyExtObject: any;
 
 @Component({
     moduleId: module.id,
@@ -68,7 +71,7 @@ export class AgentTestComponent implements OnInit {
         //}, this.botWindowElement.nativeElement);
 
         this.LoadAll();
-
+        //this.close_popup('none');
 
     }
     /*
@@ -155,6 +158,7 @@ export class AgentTestComponent implements OnInit {
     }
     
     */
+    /*
      //this function can remove a array element.
      ArrayRemove(array, from, to) {
          var rest = array.slice((to || from) + 1 || array.length);
@@ -169,7 +173,7 @@ export class AgentTestComponent implements OnInit {
 
      //this is used to close a popup
      close_popup(id) {
-         debugger;
+         console.log("ID ", id);
          for (var iii = 0; iii < this.popups.length; iii++) {
              if (id == this.popups[iii]) {
                  this.ArrayRemove(this.popups, iii, 0);
@@ -185,6 +189,8 @@ export class AgentTestComponent implements OnInit {
 
      //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
      display_popups() {
+         skyExtObject.display_popups();
+         
          var right = 220;
 
          var iii = 0;
@@ -202,11 +208,22 @@ export class AgentTestComponent implements OnInit {
              element.style.display = "none";
          }
      }
-
+    */
 
      DisplayChat(id: string, name: string) {
+         //skyExtObject.func1();
+
+         //const divchatwindow = <HTMLDivElement>document.createElement('app-chat-window');
+       
+         //document.getElementById("bot-container").appendChild(divchatwindow);
+
+
+         /**/
+         
          console.log(id);
          console.log(name);
+         skyExtObject.register_popup(id, name);
+         /*
          for (var iii = 0; iii < this.popups.length; iii++) {
              //already registered. Bring it to front.
              if (id == this.popups[iii]) {
@@ -220,14 +237,14 @@ export class AgentTestComponent implements OnInit {
                  return;
              }
          }
-        
+        */
         // var element = '<div class="popup-box chat-popup" id="' + id + '">';
          // element = element + '<div class="popup-head">';
           //element = element + '<div class="popup-head-left">' + name + '</div>';
           //element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\'' + id + '\');">&#10005;</a></div>';
           //element = element + '<div style="clear: both"></div></div><div class="popup-messages"></div></div>';
         //  document.getElementById("bot-container").innerHTML = document.getElementById("bot-container").innerHTML + element;
-         
+         /*
          const divElement = <HTMLDivElement>document.createElement('div');
          divElement.classList.add('popup-box', 'chat-popup');
          divElement.id = id;
@@ -242,20 +259,29 @@ export class AgentTestComponent implements OnInit {
              //this.sendToBot(id, conversationId);
              //this.AcceptUser(ifid);
          };
+         //const divElementMsg = <HTMLDivElement>document.createElement('div');
+         ////divElement.classList.add('popup-box', 'chat-popup');
+         ////divElement.id = id;
+         //divElementMsg.style.backgroundColor = '#6d84b4';
+         //divElementMsg.innerHTML = `User : ${name} <br/> Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea style='width :100%;'>command accept ${id}</textarea><br/> `;
+         //divElement.appendChild(divElementMsg);
          const divElementMsg = <HTMLDivElement>document.createElement('div');
-         //divElement.classList.add('popup-box', 'chat-popup');
-         //divElement.id = id;
-         divElementMsg.innerHTML = `User : ${name} <br/> Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea width='100%'>command accept ${id}</textarea><br/>  `;
+         divElementMsg.classList.add('popup-head');
+         divElementMsg.innerHTML = `<div class="popup-head-left">User : ${name}</div><div class="popup-head-right"><a onclick="skyExtObject.close_popup(${id});">&#10005;</a></div>
+		 <div style="clear: both"></div>Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea style='width :100%;'>command accept ${id}</textarea><br/>`;
          divElement.appendChild(divElementMsg);
 
          divElement.appendChild(iframe);
          document.getElementById("bot-container").appendChild(divElement);
-         
+         */
+         /*
          this.popups.unshift(id);
 
          this.calculate_popups();
+         */
+         
      }
-
+    /*
      //calculate the total number of popups suitable and then populate the toatal_popups variable.
      calculate_popups() {
          let width = window.innerWidth;
@@ -292,4 +318,6 @@ export class AgentTestComponent implements OnInit {
              }, 8 * 1000);
          }
      }
+
+    */
 }

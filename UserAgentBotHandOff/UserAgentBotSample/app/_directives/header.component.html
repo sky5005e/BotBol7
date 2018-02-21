@@ -12,11 +12,11 @@
         </select>
 
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" [routerLink]="['/home']">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Home</span>
-                </a>
+                </a> 
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" [routerLink]="['/visitors']">
@@ -58,8 +58,8 @@
                     <span class="nav-link-text">Setting</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li class="active"><a [routerLink]="['/agents']">Agents</a></li>
-                    <li><a [routerLink]="['/departments']">Departments</a></li>
+                    <li><a [routerLink]="['/agents']">Agents</a></li>
+                    <li><a [routerLink]="['/department']">Departments</a></li>
                     <li><a [routerLink]="['/roles']">Roles</a></li>
                     <li><a [routerLink]="['/routing']">Routing</a></li>
                     <li><a [routerLink]="['/shortcuts']">Shortcuts</a></li>

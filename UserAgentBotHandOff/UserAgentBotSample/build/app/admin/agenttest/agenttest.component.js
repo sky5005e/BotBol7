@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const index_1 = require("../../_services/index");
 const global_1 = require("../../_shared/global");
+require("assets/js/skyexternal.js");
 let AgentTestComponent = class AgentTestComponent {
     constructor(paService) {
         this.paService = paService;
@@ -33,10 +34,6 @@ let AgentTestComponent = class AgentTestComponent {
         };
         this.chats = document.getElementById("chats");
         this.messages = document.getElementById("messages");
-        //this variable represents the total number of popups can be displayed according to the viewport width
-        this.total_popups = 0;
-        //arrays of popups ids
-        this.popups = [];
         setInterval(() => { this.LoadAll(); }, 60 * 1000);
     }
     LoadAll() {
@@ -57,6 +54,7 @@ let AgentTestComponent = class AgentTestComponent {
         //    locale: 'en'
         //}, this.botWindowElement.nativeElement);
         this.LoadAll();
+        //this.close_popup('none');
     }
     /*
     directLine = new DirectLine({
@@ -142,112 +140,121 @@ let AgentTestComponent = class AgentTestComponent {
     }
     
     */
-    //this function can remove a array element.
-    ArrayRemove(array, from, to) {
-        var rest = array.slice((to || from) + 1 || array.length);
-        array.length = from < 0 ? array.length + from : from;
-        return array.push.apply(array, rest);
-    }
-    ;
-    //this is used to close a popup
-    close_popup(id) {
-        debugger;
-        for (var iii = 0; iii < this.popups.length; iii++) {
-            if (id == this.popups[iii]) {
-                this.ArrayRemove(this.popups, iii, 0);
-                document.getElementById(id).style.display = "none";
-                this.calculate_popups();
-                return;
-            }
-        }
-    }
-    //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
-    display_popups() {
-        var right = 220;
-        var iii = 0;
-        for (iii; iii < this.total_popups; iii++) {
-            if (this.popups[iii] != undefined) {
-                var element = document.getElementById(this.popups[iii]);
-                element.style.right = right + "px";
-                right = right + 320;
-                element.style.display = "block";
-            }
-        }
-        for (var jjj = iii; jjj < this.popups.length; jjj++) {
-            var element = document.getElementById(this.popups[jjj]);
-            element.style.display = "none";
-        }
-    }
+    /*
+     //this function can remove a array element.
+     ArrayRemove(array, from, to) {
+         var rest = array.slice((to || from) + 1 || array.length);
+         array.length = from < 0 ? array.length + from : from;
+         return array.push.apply(array, rest);
+     };
+     //this variable represents the total number of popups can be displayed according to the viewport width
+     total_popups = 0;
+
+     //arrays of popups ids
+     popups = [];
+
+     //this is used to close a popup
+     close_popup(id) {
+         console.log("ID ", id);
+         for (var iii = 0; iii < this.popups.length; iii++) {
+             if (id == this.popups[iii]) {
+                 this.ArrayRemove(this.popups, iii, 0);
+
+                 document.getElementById(id).style.display = "none";
+
+                 this.calculate_popups();
+
+                 return;
+             }
+         }
+     }
+
+     //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+     display_popups() {
+         skyExtObject.display_popups();
+         
+         var right = 220;
+
+         var iii = 0;
+         for (iii; iii < this.total_popups; iii++) {
+             if (this.popups[iii] != undefined) {
+                 var element = document.getElementById(this.popups[iii]);
+                 element.style.right = right + "px";
+                 right = right + 320;
+                 element.style.display = "block";
+             }
+         }
+
+         for (var jjj = iii; jjj < this.popups.length; jjj++) {
+             var element = document.getElementById(this.popups[jjj]);
+             element.style.display = "none";
+         }
+     }
+    */
     DisplayChat(id, name) {
+        //skyExtObject.func1();
+        //const divchatwindow = <HTMLDivElement>document.createElement('app-chat-window');
+        //document.getElementById("bot-container").appendChild(divchatwindow);
+        /**/
         console.log(id);
         console.log(name);
+        skyExtObject.register_popup(id, name);
+        /*
         for (var iii = 0; iii < this.popups.length; iii++) {
             //already registered. Bring it to front.
             if (id == this.popups[iii]) {
                 this.ArrayRemove(this.popups, iii, 0);
+
                 this.popups.unshift(id);
+
                 this.calculate_popups();
+
+
                 return;
             }
         }
+       */
         // var element = '<div class="popup-box chat-popup" id="' + id + '">';
         // element = element + '<div class="popup-head">';
         //element = element + '<div class="popup-head-left">' + name + '</div>';
         //element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\'' + id + '\');">&#10005;</a></div>';
         //element = element + '<div style="clear: both"></div></div><div class="popup-messages"></div></div>';
         //  document.getElementById("bot-container").innerHTML = document.getElementById("bot-container").innerHTML + element;
-        const divElement = document.createElement('div');
+        /*
+        const divElement = <HTMLDivElement>document.createElement('div');
         divElement.classList.add('popup-box', 'chat-popup');
         divElement.id = id;
+
         const ifid = `botchat_${id}`;
-        const iframe = document.createElement('iframe');
+        const iframe = <HTMLIFrameElement>document.createElement('iframe');
         iframe.id = ifid;
         iframe.src = 'https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U&userId=E2LVkp79VXo&userName=AgentSky';
         iframe.width = "320";
         iframe.height = "360";
-        iframe.onload = (event) => {
+        iframe.onload = (event: Event) => {
             //this.sendToBot(id, conversationId);
             //this.AcceptUser(ifid);
         };
-        const divElementMsg = document.createElement('div');
-        //divElement.classList.add('popup-box', 'chat-popup');
-        //divElement.id = id;
-        divElementMsg.innerHTML = `User : ${name} <br/> Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea width='100%'>command accept ${id}</textarea><br/>  `;
+        //const divElementMsg = <HTMLDivElement>document.createElement('div');
+        ////divElement.classList.add('popup-box', 'chat-popup');
+        ////divElement.id = id;
+        //divElementMsg.style.backgroundColor = '#6d84b4';
+        //divElementMsg.innerHTML = `User : ${name} <br/> Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea style='width :100%;'>command accept ${id}</textarea><br/> `;
+        //divElement.appendChild(divElementMsg);
+        const divElementMsg = <HTMLDivElement>document.createElement('div');
+        divElementMsg.classList.add('popup-head');
+        divElementMsg.innerHTML = `<div class="popup-head-left">User : ${name}</div><div class="popup-head-right"><a onclick="skyExtObject.close_popup(${id});">&#10005;</a></div>
+        <div style="clear: both"></div>Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea style='width :100%;'>command accept ${id}</textarea><br/>`;
         divElement.appendChild(divElementMsg);
+
         divElement.appendChild(iframe);
         document.getElementById("bot-container").appendChild(divElement);
+        */
+        /*
         this.popups.unshift(id);
+
         this.calculate_popups();
-    }
-    //calculate the total number of popups suitable and then populate the toatal_popups variable.
-    calculate_popups() {
-        let width = window.innerWidth;
-        if (width < 540) {
-            this.total_popups = 0;
-        }
-        else {
-            width = width - 200;
-            //320 is width of a single popup box
-            this.total_popups = width / 320;
-        }
-        this.display_popups();
-    }
-    AcceptUser(id) {
-        if (id != "") {
-            debugger;
-            const iframe = document.getElementById(id).contentWindow;
-            console.log("iframe", id);
-            var doc = iframe.document; // || iframe.document;
-            debugger;
-            const inputs = doc.getElementsByClassName('wc-shellinput')[0]; //').innerText
-            inputs.focus();
-            inputs.value = 'Hello from server to  Iframe';
-            inputs.form.submit();
-            const wcsend = document.getElementsByClassName('wc-send')[0];
-            setTimeout(() => {
-                wcsend.click();
-            }, 8 * 1000);
-        }
+        */
     }
 };
 __decorate([

@@ -15,35 +15,25 @@ namespace UserAgentBot.Controllers
             return ToJson(List()); //ErrorJson(List());//ToJson(List());
         }
 
-        private List<UserLog> List()
+        private List<UserInformation> List()
         {
-            List<UserLog> Users = new List<UserLog>();
-            for (int i = 1; i <= 500; i++)
-            {
-                UserLog user = new UserLog();
-                //user.FirstName = "FirstName" + i.ToString();
-                //user.LastName = "LastName" + i.ToString();
-               // user.Email = string.Format("Email{0}@gmail.com", i.ToString());
-                Users.Add(user);
-            }
-
-            return Users;
+            return DB.UserInformation.ToList();
         }
 
-        public HttpResponseMessage Post([FromBody]UserLog value)
+        public HttpResponseMessage Post([FromBody]UserInformation value)
         {
-            DB.UserLog.Add(value);
+            DB.UserInformation.Add(value);
             return ToJson(DB.SaveChanges());
         }
 
-        public HttpResponseMessage Put(int id, [FromBody]UserLog value)
+        public HttpResponseMessage Put(int id, [FromBody]UserInformation value)
         {
             DB.Entry(value).State = EntityState.Modified;
             return ToJson(DB.SaveChanges());
         }
-        public HttpResponseMessage Delete(string  id)
+        public HttpResponseMessage Delete(int  id)
         {
-            DB.UserLog.Remove(DB.UserLog.FirstOrDefault(x => x.UserID == id));
+            DB.UserInformation.Remove(DB.UserInformation.FirstOrDefault(x => x.UserId == id));
             return ToJson(DB.SaveChanges());
         }
     }

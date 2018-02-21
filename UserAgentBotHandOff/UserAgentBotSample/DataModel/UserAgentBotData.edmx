@@ -44,6 +44,8 @@
           <Property Name="QuestionDesc" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="AnswerDesc" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="created" Type="datetime" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="150" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="QuestionSet">
           <Key>
@@ -182,6 +184,8 @@
           <Property Name="QuestionDesc" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="AnswerDesc" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FilePath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="QuestionSet">
           <Key>
@@ -296,6 +300,8 @@
           <EntitySetMapping Name="QuestionAnswer">
             <EntityTypeMapping TypeName="UserAgentDBModel.QuestionAnswer">
               <MappingFragment StoreEntitySet="QuestionAnswer">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="created" ColumnName="created" />
                 <ScalarProperty Name="AnswerDesc" ColumnName="AnswerDesc" />
                 <ScalarProperty Name="QuestionDesc" ColumnName="QuestionDesc" />

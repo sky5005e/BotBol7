@@ -81,6 +81,9 @@ let QuesAnsService = class QuesAnsService {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server error');
     }
+    PostImage(url, formdata, options) {
+        return this.http.post(url, formdata, options).map((res) => res.json());
+    }
 };
 QuesAnsService = __decorate([
     core_1.Injectable(),

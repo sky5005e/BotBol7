@@ -23,9 +23,9 @@ let GoalsComponent = class GoalsComponent {
     }
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        //this.authenticationService.logout();
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/goals';
+        //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/goals';
     }
 };
 GoalsComponent = __decorate([

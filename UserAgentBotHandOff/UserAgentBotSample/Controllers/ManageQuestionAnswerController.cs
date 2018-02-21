@@ -9,6 +9,9 @@ using System.Web.Http;
 using UserAgentBot.DataModel;
 using UserAgentBot.ViewModels;
 using UserAgentBot.Controllers;
+using System.Web;
+using System.Drawing;
+using UserAgentBot.Repository;
 
 namespace UserAgentBot.Controllers
 {
@@ -27,21 +30,76 @@ namespace UserAgentBot.Controllers
         {
             return DB.QuestionAnswer.ToList();
         }
-        [Route("post")]
-        public HttpResponseMessage Post([FromBody]QuestionAnswer value)
+
+        [HttpPost]
+        [Route("upload")]
+        public async Task<HttpResponseMessage> Upload(int quesAnsId, string questionDesc, string answer)
         {
-            value.created = DateTime.UtcNow;
-            DB.QuestionAnswer.Add(value);
-            return ToJson(DB.SaveChanges());
+            try
+            {
+                var context = HttpContext.Current.Request;
+                if (context.Files.Count > 0)
+                {
+
+                }
+                var t = await DB.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
-        [Route("put")]
+
+        [HttpPost]
+        [Route("post")]
+        public async Task<HttpResponseMessage> post(string questionDesc, string answer)
+        {
+            try
+            {
+                var context = HttpContext.Current.Request;
+                string filePath = string.Empty;
+                string name = string.Empty;
+                if (context.Files.Count > 0)
+                {
+                    name = context.Files[0].FileName;
+                    filePath = String.Format("{0}_{1}", DateTime.Now.Ticks, name);
+                    var savePath = HttpContext.Current.Server.MapPath("~/UploadedFiles/" + filePath);
+                    context.Files[0].SaveAs(savePath);
+                }
+                if (!string.IsNullOrEmpty(answer) && !string.IsNullOrEmpty(questionDesc))
+                {
+                    QuestionAnswer model = new QuestionAnswer();
+                    model.AnswerDesc = answer;
+                    model.QuestionDesc = questionDesc;
+                    model.created = DateTime.UtcNow;
+                    model.FileName = name;
+                    model.FilePath = filePath;
+                    DB.QuestionAnswer.Add(model);
+                    int result = await DB.SaveChangesAsync();
+                    return ToJson(result);
+                }
+                else
+                {
+                    await UtilityRepo.LogMsgAsync("Error File saving");
+                    return ToJson("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                await  UtilityRepo.LogErrorAsync(ex);
+                return ToJson("Error");
+            }
+        }
+
+        [Route("put/{id}")]
 
         public HttpResponseMessage Put(int id, [FromBody]QuestionAnswer value)
         {
             DB.Entry(value).State = EntityState.Modified;
             return ToJson(DB.SaveChanges());
         }
-        [Route("delete")]
+        [Route("delete/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             DB.QuestionAnswer.Remove(DB.QuestionAnswer.FirstOrDefault(x => x.QuesAnsId == id));

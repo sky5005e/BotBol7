@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
         body.classList.remove("sticky-footer");
         body.classList.remove("bg-dark");
 
+        body.style.background = 'url(assets/img/bge.jpg) no-repeat; background-size:cover;';
+
     }
 
     //Remove the class from body tag when the View is destroyed

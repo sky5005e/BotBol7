@@ -190,6 +190,7 @@
     <Content Include="app\user\user.component.html" />
     <Content Include="app\_directives\alert.component.html" />
     <Content Include="app\_directives\chatwindow.component.html" />
+    <Content Include="app\_directives\fileupload.component.html" />
     <Content Include="app\_directives\footer.component.html" />
     <Content Include="app\_directives\header.component.html" />
     <Content Include="app\_directives\logout.component.html" />
@@ -202,6 +203,32 @@
     <Content Include="assets\forgot-password.html" />
     <Content Include="assets\goals.html" />
     <Content Include="assets\history.html" />
+    <Content Include="assets\icon\android-icon-144x144.png" />
+    <Content Include="assets\icon\android-icon-192x192.png" />
+    <Content Include="assets\icon\android-icon-36x36.png" />
+    <Content Include="assets\icon\android-icon-48x48.png" />
+    <Content Include="assets\icon\android-icon-72x72.png" />
+    <Content Include="assets\icon\android-icon-96x96.png" />
+    <Content Include="assets\icon\apple-icon-114x114.png" />
+    <Content Include="assets\icon\apple-icon-120x120.png" />
+    <Content Include="assets\icon\apple-icon-144x144.png" />
+    <Content Include="assets\icon\apple-icon-152x152.png" />
+    <Content Include="assets\icon\apple-icon-180x180.png" />
+    <Content Include="assets\icon\apple-icon-57x57.png" />
+    <Content Include="assets\icon\apple-icon-60x60.png" />
+    <Content Include="assets\icon\apple-icon-72x72.png" />
+    <Content Include="assets\icon\apple-icon-76x76.png" />
+    <Content Include="assets\icon\apple-icon-precomposed.png" />
+    <Content Include="assets\icon\apple-icon.png" />
+    <Content Include="assets\icon\browserconfig.xml" />
+    <Content Include="assets\icon\favicon-16x16.png" />
+    <Content Include="assets\icon\favicon-32x32.png" />
+    <Content Include="assets\icon\favicon-96x96.png" />
+    <Content Include="assets\icon\favicon.ico" />
+    <Content Include="assets\icon\ms-icon-144x144.png" />
+    <Content Include="assets\icon\ms-icon-150x150.png" />
+    <Content Include="assets\icon\ms-icon-310x310.png" />
+    <Content Include="assets\icon\ms-icon-70x70.png" />
     <Content Include="assets\img\assisned.png" />
     <Content Include="assets\img\avatar-1.jpg" />
     <Content Include="assets\img\avatar-2.jpg" />
@@ -250,6 +277,7 @@
     <Content Include="assets\img\template-mac.png" />
     <Content Include="assets\img\vv.jpg" />
     <Content Include="assets\index.html" />
+    <Content Include="assets\js\skyexternal.js" />
     <Content Include="assets\js\easy-responsive-tabs.js" />
     <Content Include="assets\js\jquery.copy-to-clipboard.js" />
     <Content Include="assets\js\jquery.gorilla-dropdown.js" />
@@ -462,6 +490,7 @@
     <Content Include="build\app\admin\layouts\admin-leftside\admin-leftside.component.js.map" />
     <Content Include="build\app\forgotpassword\forgotpassword.component.js.map" />
     <Content Include="build\app\forgotpassword\index.js.map" />
+    <Content Include="assets\icon\manifest.json" />
     <None Include="Properties\PublishProfiles\MyQnAbotTest-Web-Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\UserAgentBot-Web-Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -477,6 +506,7 @@
     <Content Include="Scripts\respond.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="systemjs.config.js" />
+    <Content Include="UploadedFiles\636539689159559818_Capture.PNG" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -489,8 +519,10 @@
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\BaseAPIController.cs" />
     <Compile Include="Controllers\CustomerAgentController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\ManageQuestionAnswerController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserAPIController.cs" />
     <Compile Include="DataModel\CustomerAgentLog.cs">
       <DependentUpon>UserAgentBotData.tt</DependentUpon>
@@ -636,6 +668,7 @@
     <TypeScriptCompile Include="app\user\user.component.ts" />
     <TypeScriptCompile Include="app\_directives\alert.component.ts" />
     <TypeScriptCompile Include="app\_directives\chatwindow.component.ts" />
+    <TypeScriptCompile Include="app\_directives\fileupload.component.ts" />
     <TypeScriptCompile Include="app\_directives\footer.component.ts" />
     <TypeScriptCompile Include="app\_directives\header.component.ts" />
     <TypeScriptCompile Include="app\_directives\index.ts" />
@@ -652,9 +685,12 @@
     <TypeScriptCompile Include="app\_models\users.ts" />
     <TypeScriptCompile Include="app\_services\alert.service.ts" />
     <TypeScriptCompile Include="app\_services\authentication.service.ts" />
+    <TypeScriptCompile Include="app\_services\department.service.ts" />
+    <TypeScriptCompile Include="app\_services\file.service.ts" />
     <TypeScriptCompile Include="app\_services\index.ts" />
     <TypeScriptCompile Include="app\_services\pendingassistant.service.ts" />
     <TypeScriptCompile Include="app\_services\quesans.service.ts" />
+    <TypeScriptCompile Include="app\_services\role.service.ts" />
     <TypeScriptCompile Include="app\_services\user.service.ts" />
     <TypeScriptCompile Include="app\_services\users.service.ts" />
     <TypeScriptCompile Include="app\_shared\enum.ts" />

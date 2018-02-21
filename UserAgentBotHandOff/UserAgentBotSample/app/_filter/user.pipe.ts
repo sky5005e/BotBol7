@@ -7,12 +7,12 @@ import { IUser } from '../_models/index';
 
 export class UserFilterPipe implements PipeTransform {
 
-    transform(value: IUser[], filter: string): IUser[] {
+    transform(value: any, filter: string): any[] {
         filter = filter ? filter.toLocaleLowerCase() : null;
-        return filter ? value.filter((app: IUser) =>
-            app.FirstName != null && app.FirstName.toLocaleLowerCase().indexOf(filter) != -1
-            || app.LastName != null && app.LastName.toLocaleLowerCase().indexOf(filter) != -1
-            || app.Gender != null && app.Gender.toLocaleLowerCase().indexOf(filter) != -1
+        return filter ? value.filter((app: any) =>
+            app.questionDesc != null && app.questionDesc.toLocaleLowerCase().indexOf(filter) != -1
+            //|| app.LastName != null && app.LastName.toLocaleLowerCase().indexOf(filter) != -1
+            || app.answerDesc != null && app.answerDesc.toLocaleLowerCase().indexOf(filter) != -1
 
         ) : value;
 

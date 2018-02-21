@@ -36,18 +36,27 @@ namespace UserAgentBot.Dialogs
             {
                 var businesLogic = new DBLogic();
                 var response = businesLogic.GetById(state.SelectedQues);
-                var reply = string.Empty;
+                var replyText = string.Empty;
                 if (!string.IsNullOrEmpty(response.Qdesc))
                 {
-                    reply = $"As per your selection : {response.Qdesc} : {response.Ansdesc}";
+                    replyText =  $"{ response.Qdesc} : { response.Ansdesc}";//$"As per your selection : {response.Qdesc} : {response.Ansdesc}";
                 }
                 else
                 {
-                    reply = $"Sorry we could not find Ques: {state.SelectedQues}";
+                    replyText = $"Sorry we could not find Ques: {state.SelectedQues}";
                 }
-                await context.PostAsync(reply);
+                var replyMessage = context.MakeMessage();
+                replyMessage.Text = replyText;
+                if (!string.IsNullOrEmpty(response.FilePath))
+                {
+                    replyMessage.Attachments = new List<Attachment> {
+                       Utils.Utility.GetLocalAttachment(response.FilePath, response.FileName)
+                    };
+                }
+                await context.PostAsync(replyMessage);
             };
-            var builder = new FormBuilder<QuestionTemplate>()
+            
+                var builder = new FormBuilder<QuestionTemplate>()
                         //.Message("Available Options")
                         .Field(nameof(QuestionDesc))
                         .Field(new FieldReflector<QuestionTemplate>(nameof(SelectedQues))
@@ -56,40 +65,66 @@ namespace UserAgentBot.Dialogs
                             {
                                 return string.IsNullOrEmpty(state.SelectedQues);
                             })
-                            .SetPrompt(new PromptAttribute("Please select one of the following options: {||}")
-                            {
-                                ChoiceStyle = ChoiceStyleOptions.Buttons
-
-                            })
+                            //.SetPrompt(new PromptAttribute("Please select one of the following options: {||}")
+                            //{
+                            //    ChoiceStyle = ChoiceStyleOptions.Buttons
+                                
+                            //})
                             .SetDefine((state, field) =>
                             {
                                 //var result = logic.GetQues(state.QuestionDesc);
-                                 var result = logic.GetQues2(state.QuestionDesc);
+                                var result = logic.GetQues2(state.QuestionDesc);
                                 foreach (var item in result)
                                 {
                                     //field
                                     //    .AddDescription(item.Item1, item.Item2)
                                     //    .AddTerms(item.Item1, item.Item2);
+                                    string image = string.IsNullOrEmpty(item.FilePath) ? null : Utils.Utility.GetImageUrl(item.FilePath);
+                                    string message = string.IsNullOrEmpty(item.Ansdesc) ? null : item.Ansdesc;
+
                                     field
-                                       .AddDescription(item.Qdesc, item.Qdesc)
+                                       .AddDescription(item.Qdesc, item.Qdesc, image, message)
                                        .AddTerms(item.Qdesc, item.Qdesc);
+                                    if (image != null)
+                                    {
+                                        field.SetPrompt(new PromptAttribute("Please select one of the following options: {||}")
+                                        {
+
+                                            ChoiceStyle = ChoiceStyleOptions.Carousel
+
+                                        });
+                                    }
+                                    else
+                                    {
+                                        field.SetPrompt(new PromptAttribute("Please select one of the following options: {||}")
+                                        {
+
+                                            ChoiceStyle = ChoiceStyleOptions.Buttons
+
+                                        });
+                                    }
                                 }
 
                                 return Task.FromResult(true);
                             }))
                             .OnCompletion(process);
+           
             return builder.Build();
         }
     }
 
-    [Serializable]
-    public class QASMain
-    {
-        public int Qid { get; set; }
-        public string Qdesc { get; set; }
+        [Serializable]
+        public class QASMain
+        {
+            public int Qid { get; set; }
+            public string Qdesc { get; set; }
 
-        public string Ansdesc { get; set; }
-    }
+            public string Ansdesc { get; set; }
+
+            public string FileName { get; set; }
+
+            public string FilePath { get; set; }
+        }
 
     public class DBLogic
     {
@@ -105,6 +140,8 @@ namespace UserAgentBot.Dialogs
                 responseData.Qid = result.QuesAnsId;
                 responseData.Qdesc = result.QuestionDesc;
                 responseData.Ansdesc = result.AnswerDesc;
+                responseData.FilePath = result.FilePath;
+                responseData.FileName = result.FileName;
             }
             else
             {
@@ -150,6 +187,9 @@ namespace UserAgentBot.Dialogs
                 var q = new QASMain();
                 q.Qid = result[i].QuesAnsId;
                 q.Qdesc = result[i].QuestionDesc;
+
+                q.FileName = result[i].FileName;
+                q.FilePath = result[i].FilePath;
                 names.Add(q);
             }
             //if (!string.IsNullOrEmpty(ques))

@@ -30,7 +30,7 @@
             'ng2-bs3-modal': 'node_modules/ng2-bs3-modal',
             'ng2-charts': 'node_modules/ng2-charts',
             'botframework-webchat': 'node_modules/botframework-webchat',
-            "botframework-directlinejs": 'node_modules/botframework-directlinejs',
+            "botframework-directlinejs": 'node_modules/botframework-directlinejs'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

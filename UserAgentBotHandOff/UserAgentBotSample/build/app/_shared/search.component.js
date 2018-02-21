@@ -38,7 +38,15 @@ __decorate([
 SearchComponent = __decorate([
     core_1.Component({
         selector: 'search-list',
-        template: `<div class="form-inline">
+        template: `
+            <div class="right">
+                <div class="search">
+                   <input (paste)="getPasteData($event)" (keyup)="getEachChar($event.target.value)" type="text" [(ngModel)]="listFilter" class="form-control input-lg" placeholder="Search">          
+                </div>
+             <div class="cancel" (click)="clearFilter()"> Clear Search</div>
+             </div>
+
+<!--<div class="form-inline">
                 <div class="form-group">
                   <label><h3>{{title}}</h3></label>
                 </div>
@@ -52,7 +60,7 @@ SearchComponent = __decorate([
            <div class="h3 text-muted">Filter by: {{listFilter}}</div>
         </div>
       </div>
-     </div> `
+     </div> -->`
     })
 ], SearchComponent);
 exports.SearchComponent = SearchComponent;

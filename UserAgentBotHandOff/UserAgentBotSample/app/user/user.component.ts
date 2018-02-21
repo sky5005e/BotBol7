@@ -2,7 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertService, UsersService } from '../_services/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalComponent  } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/src/ng2-bs3-modal/ng2-bs3-modal';
 import { IUser } from '../_models/index';
 import { DBOperation } from '../_shared/enum';
@@ -32,9 +32,9 @@ export class UsersComponent implements OnInit {
     ngOnInit(): void {
         this.userFrm = this.fb.group({
             Id: [''],
-            FirstName: ['', Validators.required],
-            LastName: [''],
-            Gender: ['', Validators.required]
+            UserName: ['', Validators.required],
+            Channel: ['']//,
+            //Gender: ['', Validators.required]
         });
         this.title = 'Search';
         this.LoadUsers();
@@ -62,7 +62,11 @@ export class UsersComponent implements OnInit {
         this.SetControlsState(true);
         this.modalTitle = "Edit User";
         this.modalBtnTitle = "Update";
-        this.user = this.users.filter(x => x.Id == id)[0];
+        //this.user =
+        let usert = this.users.filter(x => x.Id == id);
+        console.log("usert", usert);
+
+        //[0];
         this.userFrm.setValue(this.user);
         this.modal.open();
     }

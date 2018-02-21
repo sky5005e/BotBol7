@@ -12,8 +12,6 @@
             <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../images/loading.gif" width="32" height="32" /> Loading...</div>
             <div *ngIf='users && users.length==0' class="alert alert-info" role="alert">No record found!</div>
 
-          
-
             <table class='table table-striped' *ngIf='users  && users.length'>
                 <thead>
                     <tr>
@@ -25,12 +23,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users | userFilter:listFilter">
-                        <td>{{user.FirstName}}</td>
-                        <td>{{user.LastName}}</td>
-                        <td>{{user.Gender}}</td>
+                        <td>{{user.channel}}</td>
+                        <td>{{user.userName}}</td>
                         <td>
-                            <button title="Edit" class="btn btn-primary" (click)="editUser(user.Id)">Edit</button>
-                            <button title="Delete" class="btn btn-danger" (click)="deleteUser(user.Id)">Delete</button>
+                            <button title="Edit" class="btn btn-primary" (click)="editUser(user.id)">Edit</button>
+                            <button title="Delete" class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -57,19 +54,19 @@
             <div class="form-group">
                 <div>
                     <span>Full name*</span>
-                    <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName">
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="Channel">
                 </div>
                 <div>
                     <span>Full name</span>
-                    <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName">
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="UserName">
                 </div>
-                <div>
+                <!--<div>
                     <span>Gender*</span>
                     <select formControlName="Gender" class="form-control">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
-                </div>
+                </div>-->
             </div>
         </modal-body>
         <modal-footer>

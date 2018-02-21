@@ -25,9 +25,9 @@ let UsersComponent = class UsersComponent {
     ngOnInit() {
         this.userFrm = this.fb.group({
             Id: [''],
-            FirstName: ['', forms_1.Validators.required],
-            LastName: [''],
-            Gender: ['', forms_1.Validators.required]
+            UserName: ['', forms_1.Validators.required],
+            Channel: [''] //,
+            //Gender: ['', Validators.required]
         });
         this.title = 'Search';
         this.LoadUsers();
@@ -52,7 +52,10 @@ let UsersComponent = class UsersComponent {
         this.SetControlsState(true);
         this.modalTitle = "Edit User";
         this.modalBtnTitle = "Update";
-        this.user = this.users.filter(x => x.Id == id)[0];
+        //this.user =
+        let usert = this.users.filter(x => x.Id == id);
+        console.log("usert", usert);
+        //[0];
         this.userFrm.setValue(this.user);
         this.modal.open();
     }

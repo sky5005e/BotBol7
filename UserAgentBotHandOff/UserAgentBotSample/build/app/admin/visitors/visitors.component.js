@@ -23,9 +23,9 @@ let VisitorsComponent = class VisitorsComponent {
     }
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        // this.authenticationService.logout();
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/visitors';
+        //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/visitors';
     }
 };
 VisitorsComponent = __decorate([

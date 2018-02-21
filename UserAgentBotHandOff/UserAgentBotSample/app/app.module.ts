@@ -18,38 +18,33 @@ import { BaseRequestOptions } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
-import { AlertComponent } from './_directives/index';
-import { AdminHeaderComponent } from './_directives/index';
-import { AdminFooterComponent } from './_directives/index';
-import { ChartWindowComponent } from './_directives/index';
+import {
+    AlertComponent, AdminFooterComponent, AdminHeaderComponent,
+    ChartWindowComponent, LogoutComponent
+} from './_directives/index';
 
-import { LogoutComponent } from './_directives/index';
 import { AuthGuard } from './_guards/auth.guard';
-import { AlertService, AuthenticationService, UserService, UsersService, QuesAnsService, PendingAssistantService } from './_services/index';
+
+import {
+    AlertService, AuthenticationService, UserService,
+    UsersService, QuesAnsService, PendingAssistantService,
+    FileService, RoleService, DepartmentService
+} from './_services/index';
+
+import { FileUploadComponent } from './_directives/fileupload.component';
+
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ForgotPasswordComponent } from './forgotpassword/index';
-import { AdminComponent } from './admin/index';
-import { AccountComponent } from './admin/index';
-import { AgentComponent } from './admin/index';
-import { AnalyticsComponent } from './admin/index';
-import { BannedComponent } from './admin/index';
-import { DepartmentComponent } from './admin/index';
-import { GoalsComponent } from './admin/index';
-import { HistoryComponent } from './admin/index';
-import { PersonalComponent } from './admin/index';
-import { RolesComponent } from './admin/index';
-import { RoutingComponent } from './admin/index';
-import { ShortcutsComponent } from './admin/index';
-import { TriggersComponent } from './admin/index';
-import { VisitorsComponent } from './admin/index';
-import { WidgetComponent } from './admin/index';
 
-import { MonitorComponent } from './admin/index';
-
-import { AgentTestComponent } from './admin/index';
-
+import {
+    AdminComponent, AccountComponent, AgentComponent, AnalyticsComponent,
+    BannedComponent, DepartmentComponent, GoalsComponent, HistoryComponent,
+    PersonalComponent, RolesComponent, RoutingComponent, ShortcutsComponent,
+    TriggersComponent, VisitorsComponent, WidgetComponent, MonitorComponent,
+    AgentTestComponent
+} from './admin/index';
 
 import { UsersComponent } from './user/index';
 
@@ -101,7 +96,9 @@ import { QuesAnswerComponent } from './admin/quesanswer/index';
         WidgetComponent,
         MonitorComponent,
         ChartWindowComponent,
-        AgentTestComponent
+        AgentTestComponent,
+
+        FileUploadComponent
 
 
     ],
@@ -115,11 +112,14 @@ import { QuesAnswerComponent } from './admin/quesanswer/index';
         UsersService,
         QuesAnsService,
         PendingAssistantService,
-
+        FileService,
+        RoleService,
+        DepartmentService,
         // providers used to create fake backend
         fakeBackendProvider,
         MockBackend,
         BaseRequestOptions
+        
     ],
     bootstrap: [AppComponent]
 })

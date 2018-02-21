@@ -10,9 +10,9 @@ const core_1 = require("@angular/core");
 let UserFilterPipe = class UserFilterPipe {
     transform(value, filter) {
         filter = filter ? filter.toLocaleLowerCase() : null;
-        return filter ? value.filter((app) => app.FirstName != null && app.FirstName.toLocaleLowerCase().indexOf(filter) != -1
-            || app.LastName != null && app.LastName.toLocaleLowerCase().indexOf(filter) != -1
-            || app.Gender != null && app.Gender.toLocaleLowerCase().indexOf(filter) != -1) : value;
+        return filter ? value.filter((app) => app.questionDesc != null && app.questionDesc.toLocaleLowerCase().indexOf(filter) != -1
+            //|| app.LastName != null && app.LastName.toLocaleLowerCase().indexOf(filter) != -1
+            || app.answerDesc != null && app.answerDesc.toLocaleLowerCase().indexOf(filter) != -1) : value;
     }
 };
 UserFilterPipe = __decorate([

@@ -21,38 +21,19 @@ const http_2 = require("@angular/http");
 const app_component_1 = require("./app.component");
 const app_routing_1 = require("./app.routing");
 const index_2 = require("./_directives/index");
-const index_3 = require("./_directives/index");
-const index_4 = require("./_directives/index");
-const index_5 = require("./_directives/index");
-const index_6 = require("./_directives/index");
 const auth_guard_1 = require("./_guards/auth.guard");
-const index_7 = require("./_services/index");
-const index_8 = require("./home/index");
-const index_9 = require("./login/index");
-const index_10 = require("./register/index");
-const index_11 = require("./forgotpassword/index");
-const index_12 = require("./admin/index");
-const index_13 = require("./admin/index");
-const index_14 = require("./admin/index");
-const index_15 = require("./admin/index");
-const index_16 = require("./admin/index");
-const index_17 = require("./admin/index");
-const index_18 = require("./admin/index");
-const index_19 = require("./admin/index");
-const index_20 = require("./admin/index");
-const index_21 = require("./admin/index");
-const index_22 = require("./admin/index");
-const index_23 = require("./admin/index");
-const index_24 = require("./admin/index");
-const index_25 = require("./admin/index");
-const index_26 = require("./admin/index");
-const index_27 = require("./admin/index");
-const index_28 = require("./admin/index");
-const index_29 = require("./user/index");
-const index_30 = require("./_filter/index");
+const index_3 = require("./_services/index");
+const fileupload_component_1 = require("./_directives/fileupload.component");
+const index_4 = require("./home/index");
+const index_5 = require("./login/index");
+const index_6 = require("./register/index");
+const index_7 = require("./forgotpassword/index");
+const index_8 = require("./admin/index");
+const index_9 = require("./user/index");
+const index_10 = require("./_filter/index");
 const search_component_1 = require("./_shared/search.component");
 const errorhandler_1 = require("./_shared/errorhandler");
-const index_31 = require("./admin/quesanswer/index");
+const index_11 = require("./admin/quesanswer/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -70,45 +51,49 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             index_2.AlertComponent,
-            index_3.AdminHeaderComponent,
-            index_4.AdminFooterComponent,
-            index_8.HomeComponent,
-            index_9.LoginComponent,
-            index_10.RegisterComponent,
-            index_11.ForgotPasswordComponent,
-            index_29.UsersComponent,
-            index_30.UserFilterPipe,
+            index_2.AdminHeaderComponent,
+            index_2.AdminFooterComponent,
+            index_4.HomeComponent,
+            index_5.LoginComponent,
+            index_6.RegisterComponent,
+            index_7.ForgotPasswordComponent,
+            index_9.UsersComponent,
+            index_10.UserFilterPipe,
             search_component_1.SearchComponent,
-            index_6.LogoutComponent,
-            index_31.QuesAnswerComponent,
-            index_12.AdminComponent,
-            index_13.AccountComponent,
-            index_14.AgentComponent,
-            index_15.AnalyticsComponent,
-            index_16.BannedComponent,
-            index_17.DepartmentComponent,
-            index_18.GoalsComponent,
-            index_19.HistoryComponent,
-            index_20.PersonalComponent,
-            index_21.RolesComponent,
-            index_22.RoutingComponent,
-            index_23.ShortcutsComponent,
-            index_24.TriggersComponent,
-            index_25.VisitorsComponent,
-            index_26.WidgetComponent,
-            index_27.MonitorComponent,
-            index_5.ChartWindowComponent,
-            index_28.AgentTestComponent
+            index_2.LogoutComponent,
+            index_11.QuesAnswerComponent,
+            index_8.AdminComponent,
+            index_8.AccountComponent,
+            index_8.AgentComponent,
+            index_8.AnalyticsComponent,
+            index_8.BannedComponent,
+            index_8.DepartmentComponent,
+            index_8.GoalsComponent,
+            index_8.HistoryComponent,
+            index_8.PersonalComponent,
+            index_8.RolesComponent,
+            index_8.RoutingComponent,
+            index_8.ShortcutsComponent,
+            index_8.TriggersComponent,
+            index_8.VisitorsComponent,
+            index_8.WidgetComponent,
+            index_8.MonitorComponent,
+            index_2.ChartWindowComponent,
+            index_8.AgentTestComponent,
+            fileupload_component_1.FileUploadComponent
         ],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' },
             { provide: core_1.ErrorHandler, useClass: errorhandler_1.default },
             auth_guard_1.AuthGuard,
-            index_7.AlertService,
-            index_7.AuthenticationService,
-            index_7.UserService,
-            index_7.UsersService,
-            index_7.QuesAnsService,
-            index_7.PendingAssistantService,
+            index_3.AlertService,
+            index_3.AuthenticationService,
+            index_3.UserService,
+            index_3.UsersService,
+            index_3.QuesAnsService,
+            index_3.PendingAssistantService,
+            index_3.FileService,
+            index_3.RoleService,
+            index_3.DepartmentService,
             // providers used to create fake backend
             index_1.fakeBackendProvider,
             testing_1.MockBackend,

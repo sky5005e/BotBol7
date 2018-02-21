@@ -8,23 +8,13 @@
             </div>
             <div class="col-lg-12">
                 <div class="save_change">
-                    <div class="right">
-                        <div class="search">
-                            <input type="text" class="form-control input-lg" placeholder="Search">
-                        </div>
-                        <div class="cancel"> Clear Search</div>
-                    </div>
+                    <search-list [title]='searchTitle' (change)="criteriaChange($event)"></search-list>
                 </div>
             </div>
         </div>
         <div class="child">
             <div class="table-responsive">
-
-                <!--<div>
-        <search-list [title]='searchTitle' (change)="criteriaChange($event)"></search-list>
-    </div>
-    <br />-->
-                <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="add()" data-toggle="modal" data-target="#QuesModal">Add</button></div>
+                <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="add()">Add</button></div>
                 <div class="alert alert-info" role="alert" *ngIf="indLoading">
                     <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 </div>
@@ -40,6 +30,8 @@
                             </th>
                             <th>Ques</th>
                             <th>Answer</th>
+                            <th>File</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -50,24 +42,13 @@
                         </td>
                         <td>{{quesans.questionDesc}}</td>
                         <td>{{quesans.answerDesc}}</td>
-                        <!--<td>
-                <button title="Edit" class="btn btn-primary" (click)="edit(quesans.quesAnsId)" data-toggle="modal" data-target="#exampleModal">Edit</button>
-                <button title="Delete" class="btn btn-danger" (click)="delete(quesans.quesAnsId)">Delete</button>
-            </td>-->
+                        <td>{{quesans.fileName}}</td>
+                        <td>
+                            <button title="Edit" class="btn btn-primary" (click)="edit(quesans.quesAnsId)">Edit</button>
+                            <button title="Delete" class="btn btn-danger" (click)="delete(quesans.quesAnsId)">Delete</button>
+                        </td>
                     </tr>
 
-                    <!--<tr>
-            <td>
-                <input type="checkbox" id="c2" name="cc" />
-                <label for="c2"><span></span></label>
-            </td>
-            <td>#20169660</td>
-            <td>mukesh</td>
-            <td>Nov 14 2:06 AM</td>
-            <td>-</td>
-            <td>-</td>
-            <td>Welcome back. How can we help you today</td>
-        </tr>-->
 
                 </table>
                 <div>
@@ -84,83 +65,42 @@
 </div>
 <app-admin-footer></app-admin-footer>
 
-
-<!--<div class='panel panel-primary'>
-    <div class='panel-heading'>
-        Q n A Management
-    </div>
-    <div class='panel-body'>
-        <div class='table-responsive'>
-            <div>
-                <search-list [title]='searchTitle' (change)="criteriaChange($event)"></search-list>
-            </div>
-            <br />
-            <div style="padding-bottom:10px"><button class="btn btn-primary" (click)="add()">Add</button></div>
-            <div class="alert alert-info" role="alert" *ngIf="indLoading"><img src="../../images/loading.gif" width="32" height="32" /> Loading...</div>
-            <div *ngIf='quesanswers && quesanswers.length==0' class="alert alert-info" role="alert">No record found!</div>
-
-
-
-            <table class='table table-striped' *ngIf='quesanswers  && quesanswers.length'>
-                <thead>
-                    <tr>
-                        <th>Ques</th>
-                        <th>Answer</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let quesans of quesanswers | userFilter:listFilter">
-                        <td>{{quesans.QuestionDesc}}</td>
-                        <td>{{quesans.AnswerDesc}}</td>
-                        <td>
-                            <button title="Edit" class="btn btn-primary" (click)="edit(quesans.quesAnsId)">Edit</button>
-                            <button title="Delete" class="btn btn-danger" (click)="delete(quesans.quesAnsId)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-            </div>
-        </div>
-        <div *ngIf="msg" role="alert" class="alert alert-info alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-            {{msg}}
-        </div>
-    </div>
-</div>
--->
 <modal #modal id="QuesModal">
-    <form novalidate (ngSubmit)="onSubmit(qaFrm)" [formGroup]="qaFrm">
-        <modal-header>
-            <h4 class="modal-title">{{modalTitle}}</h4>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-            </button>
-        </modal-header>
-        <modal-body>
-
-            <div class="form-group">
-                <div>
-                    <span>Ques*</span>
-                    <textarea class="form-control" placeholder="Question Desc" formControlName="QuestionDesc" cols="5" rows="10"></textarea>
+  <form novalidate (ngSubmit)="onSubmit(qaFrm)" [formGroup]="qaFrm">
+            <modal-header class="bg-danger">
+                <h4 class="modal-title">{{modalTitle}}</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </modal-header>
+            <modal-body>
+                <input type="hidden" formControlName="created" />
+                <input type="hidden" formControlName="quesAnsId" />
+                <input type="hidden" formControlName="fileName" />
+                <input type="hidden" formControlName="filePath" />
+                <div class="form-group">
+                    <div>
+                        <span>Ques*</span>
+                        <textarea class="form-control" placeholder="Question Desc" formControlName="questionDesc" cols="10" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <span>Ans*</span>
+                        <textarea type="text" class="form-control" placeholder="Answer Desc" formControlName="answerDesc" cols="10" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <br />
+                        image :
+                        <input type="file" #file (change)="onFileChange($event)" />
+                    </div>
                 </div>
+            </modal-body>
+            <modal-footer>
                 <div>
-                    <span>Ans*</span>
-                    <textarea type="text" class="form-control" placeholder="Answer Desc" formControlName="AnswerDesc" cols="5" rows="10"></textarea>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button type="submit" [disabled]="qaFrm.invalid" class="btn btn-primary">{{modalBtnTitle}}</button>
                 </div>
-            </div>
-        </modal-body>
-        <modal-footer>
-            <div>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button type="submit" [disabled]="qaFrm.invalid" class="btn btn-primary" >{{modalBtnTitle}}</button>
-            </div>
-        </modal-footer>
-    </form>
+            </modal-footer>
+        </form>
 </modal>
-
-<app-logout></app-logout>
+    <app-logout></app-logout>
 

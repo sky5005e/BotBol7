@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Microsoft.Bot.Connector;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace UserAgentBot.Repository
 {
@@ -21,7 +22,7 @@ namespace UserAgentBot.Repository
                 // Set the properties on the UserLog object
                 NewUserLog.Channel = activity.ChannelId;
                 NewUserLog.UserID = activity.From.Id;
-                NewUserLog.UserName = activity.From.Name;
+                NewUserLog.UserName = activity.ChannelId== "telegram" ? "telegram": activity.From.Name;
                 NewUserLog.created = DateTime.UtcNow;
                 NewUserLog.Message = activity.Text.Truncate(500);
                 // Add the UserLog object to UserLogs
@@ -57,16 +58,23 @@ namespace UserAgentBot.Repository
                 // Set the properties on the UserPendingRequest object
                 req.Channel = activity.ChannelId;
                 req.UserID = activity.From.Id;
-                req.UserName = activity.From.Name;
+                req.UserName = activity.ChannelId == "telegram" ? "telegram" : activity.From.Name;
                 req.created = DateTime.UtcNow;
                 req.Message = activity.Text.Truncate(500);
                 req.MessageID = activity.Id;
                 req.Type = "ConnectionRequested";
                 req.IPAddress = ip;//string.Empty;
-                req.DeviceType = deviceType;
+                req.DeviceType = !string.IsNullOrEmpty(deviceType) ? deviceType : "unknown";
                 req.IsAttended = false;
                 // Add the UserPendingRequest object to UserPendingRequests
                 DB.UserPendingRequest.Add(req);
+                
+                //var UPRequests = DB.UserPendingRequest.Where(q => q.Channel == activity.ChannelId && q.UserID == activity.From.Id && q.IsAttended == false).ToList();
+                //foreach (var uprItem in UPRequests)
+                //{
+                //    uprItem.IsAttended = true;
+                //    //DB.Entry(uprItem).State = EntityState.Modified;
+                //}
                 // Save the changes to the database
                 return await DB.SaveChangesAsync();
             }

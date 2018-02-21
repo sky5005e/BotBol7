@@ -4,3 +4,6 @@ export * from './user.service';
 export * from './users.service';
 export * from './quesans.service';
 export * from './pendingassistant.service';
+export * from './file.service';
+export * from './department.service';
+export * from './role.service';

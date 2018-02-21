@@ -23,9 +23,9 @@ let ShortcutsComponent = class ShortcutsComponent {
     }
     ngOnInit() {
         // reset login status
-        this.authenticationService.logout();
+        //this.authenticationService.logout();
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/shortcuts';
+        //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/shortcuts';
     }
 };
 ShortcutsComponent = __decorate([
