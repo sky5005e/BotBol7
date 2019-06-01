@@ -46,7 +46,7 @@ namespace UserAgentBot.Controllers
             }
             catch (Exception ex)
             {
-
+                string msg = ex.Message;
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

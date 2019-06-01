@@ -2,6 +2,8 @@
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
+import { PendingAssistantService } from '../_services/index';
+import { Global } from '../_shared/global';
 
 @Component({
     moduleId: module.id,
@@ -10,92 +12,35 @@ import { UserService } from '../_services/index';
 
 export class HomeComponent implements OnInit {
 
-    currentUser: User;
+    currentUser: any;
     users: User[] = [];
+    dates: Date[];
+    chartdatashow = false;
+    PAAssitants: any;
+    chats: any;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private paService: PendingAssistantService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log("currentUser", this.currentUser);
     }
-
-    private chartData = [
-        {
-            label: "Sessions",
-            data: [8, 4, 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15, 8, 4]// 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15,12, 8, 24]
-        }
-    ];
-
-    private chartLabels = [//"Jan 1", "Jan 2", "Jan 3", "Jan 4", "Jan 5", "Jan 6", "Jan 7", "Jan 8", "Jan 9", "Jan 10", "Jan 11", "Jan 12", "Jan 13","Jan 14", "Jan 15","Jan 16", 
-        "Jan 17", "Jan 18", "Jan 19", "Jan 20", "Jan 21", "Jan 22", "Jan 23", "Jan 24", "Jan 25", "Jan 26", "Jan 27", "Jan 28", "Jan 29", "Jan 30", "Jan 31"];
-
+    
     chartOptions = {
         responsive: true
     };
-    //private chartOptions = {
-    //    scales: {
-    //        xAxes: [{
-    //            time: {
-    //                unit: 'date'
-    //            },
-    //            gridLines: {
-    //                display: false
-    //            },
-    //            ticks: {
-    //                maxTicksLimit: 7
-    //            }
-    //        }],
-    //        yAxes: [{
-    //            ticks: {
-    //                min: 0,
-    //                max: 40000,
-    //                maxTicksLimit: 5
-    //            },
-    //            gridLines: {
-    //                color: "rgba(0, 0, 0, .125)",
-    //            }
-    //        }],
-    //    },
-    //    legend: {
-    //        display: false
-    //    }
-    //    //scales: {
-    //    //    yAxes: [{
-    //    //        ticks: {
-    //    //            beginAtZero: true
-    //    //        }
-    //    //    }]
-    //    //}
-    //};
-    
+    chartLabels = [];
+    chartData = [];
+
     onChartClick(event) {
         console.log(event);
 
        
     }
     ngOnInit() {
-        /*
-        this.chartLabels = Array.apply(null, new Array(30))
-            .map(function () {
-                return new Date();
-            })
-            .map(function (v, i) {
-                v.setDate(v.getDate() - i);
-                return v;
-            })
-            .map(function (v) {
-                var dd = v.getDate();
-                var mm = v.getMonth() + 1;
-                var yyyy = v.getFullYear();
-                if (dd < 10) { dd = '0' + dd }
-                if (mm < 10) { mm = '0' + mm }
-                v = mm + '/' + dd + '/' + yyyy;
-                return v;
-                // return this.formatDate(v);
-            })
-            .reverse();
-
-        */
+        this.LoadChartData(false);
         this.loadAllUsers();
+        this.LoadChartAll();
 
+        this.LoadChats();
     }
 
     deleteUser(id: number) {
@@ -104,5 +49,77 @@ export class HomeComponent implements OnInit {
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+    LoadChartAll(): void {
+        this.paService.get(Global.BASE_CAA_ENDPOINT + "/monitoring/15")
+            .subscribe(res => {
+                this.PAAssitants = res; console.log('data', this.PAAssitants);
+                this.LoadChartData(true);
+            });
+    }
+
+    LoadChats(): void {
+        this.paService.get(Global.BASE_CAA_ENDPOINT + "/chats/10")
+            .subscribe(res => {
+                this.chats = res; console.log('chats', this.chats);
+            });
+    }
+
+    LoadChartData(isdata: boolean) {
+
+        this.chartLabels = Array.apply(null, new Array(15))
+            .map(function () {
+                return new Date();
+            })
+            .map(function (v, i) {
+                v.setDate(v.getDate() - i);
+                return v;
+            })
+            .map(function (v) {
+                var strArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var d = v.getDate();
+                var m = strArray[v.getMonth()];
+                var y = v.getFullYear();
+                return m + ' ' + (d <= 9 ? '0' + d : d);//'' + (d <= 9 ? '0' + d : d) + '-' + m + '-' + y;
+                
+            })
+            .reverse();
+        this.chartdatashow = true
+        // console.log(this.chartLabels);
+        if (isdata) {
+            this.chartData = [
+                { data: this.Data('Visited'), label: 'Visited' },
+               
+            ];
+        }
+        else {
+            this.chartData = [
+                {
+                    label: "Visited",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                }
+            ];
+        }
+
+    }
+
+    Data(label: string) {
+        let data = [];
+        // this.dates = Date[] = [];
+        this.dates = Array.apply(null, new Array(15))
+            .map(function () {
+                return new Date();
+            })
+            .map(function (v, i) {
+                v.setDate(v.getDate() - i);
+                return v;
+            }).reverse();
+
+        for (var i = 0; i < this.dates.length; i++) {
+            let iDate = this.dates[i];
+            let point = this.PAAssitants.filter(item => new Date(item.created).getDate() == iDate.getDate());
+            data.push(point.length);
+        }
+        return data;
     }
 }

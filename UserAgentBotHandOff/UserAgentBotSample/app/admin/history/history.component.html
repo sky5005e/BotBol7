@@ -1,17 +1,12 @@
 ﻿<app-admin-header></app-admin-header>
 <!-- Main Section -->
-
 <div class="content-wrapper">
     <div class="container">
-
-
         <div class="row">
             <div class="col-xl-12">
                 <span class="pull-left">History</span>
             </div>
-
             <div class="col-lg-12">
-
                 <div class="save_change">
                     <div class="right">
                         <div class="search">
@@ -20,8 +15,6 @@
                         <div class="cancel"> Clear Search</div>
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="row child">
@@ -39,89 +32,24 @@
                             <th>Rating</th>
                             <th>Department</th>
                             <th>Messages</th>
-
                         </tr>
                     </thead>
-
-
-
-
-
-                    <tr>
+                    <tr *ngFor="let chat of chats">
                         <td>
                             <input type="checkbox" id="c2" name="cc" />
                             <label for="c2"><span></span></label>
                         </td>
-                        <td>#20169660</td>
-                        <td>mukesh</td>
-                        <td>Nov 14 2:06 AM</td>
+                        <td>{{chat.id}}</td>
+                        <td>{{chat.attendedAgent}}</td>
+                        <td>{{chat.created | date:'h:mma'}}</td>
                         <td>-</td>
                         <td>-</td>
-                        <td>Welcome back. How can we help you today</td>
+                        <td>{{chat.message}}</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="c3" name="cc" />
-                            <label for="c3"><span></span></label>
-                        </td>
-                        <td>#20169634</td>
-                        <td>mukesh</td>
-                        <td>Nov 14 2:06 AM</td>
-                        <td>-</td>
-                        <td>Welcome</td>
-                        <td>-</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="c4" name="cc" />
-                            <label for="c4"><span></span></label>
-                        </td>
-                        <td>#20169640</td>
-                        <td>mukesh</td>
-                        <td>Nov 14 2:06 AM</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="c5" name="cc" />
-                            <label for="c5"><span></span></label>
-                        </td>
-                        <td>#20169620</td>
-                        <td>mukesh</td>
-                        <td>Nov 14 2:06 AM</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <input type="checkbox" id="c6" name="cc" />
-                            <label for="c6"><span></span></label>
-                        </td>
-                        <td>#20169680</td>
-                        <td>mukesh</td>
-                        <td>Nov 14 2:06 AM</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>Welcome back. How can we help you today</td>
-                    </tr>
-
                 </table>
             </div>
-
-
         </div>
     </div>
-
-
-
 </div>
-
 <app-admin-footer></app-admin-footer>
+<app-logout></app-logout>

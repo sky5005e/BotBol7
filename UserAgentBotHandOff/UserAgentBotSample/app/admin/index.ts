@@ -16,5 +16,5 @@ export * from './widget/widget.component';
 
 export * from './monitor/monitor.component';
 
-export * from './agenttest/agenttest.component';
+export * from './agentchat/agentchat.component';
 

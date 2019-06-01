@@ -19,5 +19,5 @@ __export(require("./triggers/triggers.component"));
 __export(require("./visitors/visitors.component"));
 __export(require("./widget/widget.component"));
 __export(require("./monitor/monitor.component"));
-__export(require("./agenttest/agenttest.component"));
+__export(require("./agentchat/agentchat.component"));
 //# sourceMappingURL=index.js.map

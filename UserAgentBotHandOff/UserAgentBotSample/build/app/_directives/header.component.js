@@ -20,10 +20,15 @@ let AdminHeaderComponent = class AdminHeaderComponent {
     }
     ngOnInit() {
         this.LoadAll();
+        this.LoadMessage();
     }
     LoadAll() {
-        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "/get")
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "get")
             .subscribe(PendingAgentAssitants => { this.PendingAgentAssitants = PendingAgentAssitants; console.log('data', PendingAgentAssitants); });
+    }
+    LoadMessage() {
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "chats/5")
+            .subscribe(res => { this.chats = res; console.log('data', this.chats); });
     }
 };
 AdminHeaderComponent = __decorate([

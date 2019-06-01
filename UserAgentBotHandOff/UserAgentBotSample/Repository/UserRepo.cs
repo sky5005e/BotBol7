@@ -66,7 +66,7 @@ namespace UserAgentBot.Repository
             return "true";
         }
 
-        public string ValidateUser(ViewModels.LoginModel model)
+        public Models.UserLoginInfoViewModel ValidateUser(ViewModels.LoginModel model)
         {
             using (var db = new UserAgentDBEntities())
             {
@@ -77,18 +77,19 @@ namespace UserAgentBot.Repository
                     byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
                     byte[] key = Guid.NewGuid().ToByteArray();
                     string token = Convert.ToBase64String(time.Concat(key).ToArray());
-                    return token;
-                    //byte[] data = Convert.FromBase64String(token);
-                    //DateTime when = DateTime.FromBinary(BitConverter.ToInt64(data, 0));
-                    //if (when < DateTime.UtcNow.AddHours(-24))
-                    //{
-                    //    // too old
-                    //}
 
+                    Models.UserLoginInfoViewModel UserInfo = new Models.UserLoginInfoViewModel();
+                    UserInfo.Email = user.Email;
+                    UserInfo.Token = token;
+                    UserInfo.UserName = user.UserName;
+                    UserInfo.FirstName = user.FirstName;
+                    UserInfo.LastName = user.LastName;
+                    UserInfo.UserId = user.UserId.ToString();
+                    return UserInfo;
                 }
                 else
                 {
-                    return "";
+                    return null;
                 }
             }
 

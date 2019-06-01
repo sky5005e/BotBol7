@@ -1,0 +1,26 @@
+﻿<app-admin-header></app-admin-header>
+<!-- Main Section -->
+<div class="content-wrapper">
+    <div class="container" style="margin-top:50px">
+        <div class="chat-sidebar">
+            <h6>Human Assistant request :</h6>
+            <div *ngFor="let pcareq of PendingAgentAssitants">
+                <div class="sidebar-name">
+                    <a class="dropdown-item" (click)="DisplayChat(pcareq.userID, pcareq.userName)">
+                        <span class="text-success">
+                            <strong>
+                                <i class="fa fa-long-arrow-up fa-fw"></i>Status Update
+                            </strong>
+                        </span>
+                        <div class="svd">{{pcareq.created |date:'h:mma'}}</div>
+                        <div class="svd" title="">{{ pcareq.userName }}.</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="bot-container"></div>
+<app-admin-footer></app-admin-footer>
+<app-logout></app-logout>
+

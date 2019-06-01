@@ -50,7 +50,8 @@ namespace UserAgentBot.Dialogs
                 if (!string.IsNullOrEmpty(response.FilePath))
                 {
                     replyMessage.Attachments = new List<Attachment> {
-                       Utils.Utility.GetLocalAttachment(response.FilePath, response.FileName)
+                       Utils.Utility.GetServerAttachment(response.FilePath, response.FileName)
+                       
                     };
                 }
                 await context.PostAsync(replyMessage);

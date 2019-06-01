@@ -76,7 +76,7 @@ namespace UserAgentBot.Dialogs
                             if (!string.IsNullOrEmpty(answers[0].FilePath))
                             {
                                 messageActivity.Attachments = new List<Attachment> {
-                                    Utils.Utility.GetLocalAttachment(answers[0].FilePath, answers[0].FileName)
+                                    Utils.Utility.GetServerAttachment(answers[0].FilePath, answers[0].FileName)
                                 };
                             }
                         }

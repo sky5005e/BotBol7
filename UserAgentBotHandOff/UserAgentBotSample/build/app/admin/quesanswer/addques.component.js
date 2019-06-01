@@ -128,7 +128,8 @@ let QuesAnswerComponent = class QuesAnswerComponent {
                 // _formData.append("value", JSON.stringify(parameters));
                 this.fileService.upload(_formData, parameters)
                     .subscribe(success => {
-                    if (success == "1") {
+                    if (success == "1") //Success
+                     {
                         this.msg = "Data successfully added.";
                         this.modal.dismiss();
                         this.LoadQAS();
@@ -180,7 +181,8 @@ let QuesAnswerComponent = class QuesAnswerComponent {
                 break;
             case enum_1.DBOperation.update:
                 this._qaService.put(global_1.Global.BASE_QAS_ENDPOINT + '/put/', formData._value.quesAnsId, formData._value).subscribe(data => {
-                    if (data == 1) {
+                    if (data == 1) //Success
+                     {
                         this.msg = "Data successfully updated.";
                         this.LoadQAS();
                     }
@@ -194,7 +196,8 @@ let QuesAnswerComponent = class QuesAnswerComponent {
                 break;
             case enum_1.DBOperation.delete:
                 this._qaService.delete(global_1.Global.BASE_QAS_ENDPOINT + '/delete/', formData._value.quesAnsId).subscribe(data => {
-                    if (data == 1) {
+                    if (data == 1) //Success
+                     {
                         this.msg = "Data successfully deleted.";
                         this.LoadQAS();
                     }

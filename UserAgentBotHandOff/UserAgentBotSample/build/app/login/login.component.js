@@ -34,7 +34,8 @@ let LoginComponent = class LoginComponent {
         body.classList.remove("fixed-nav");
         body.classList.remove("sticky-footer");
         body.classList.remove("bg-dark");
-        body.style.background = 'url(assets/img/bge.jpg) no-repeat; background-size:cover;';
+        body.style.background = 'url(assets/img/bge.jpg) no-repeat';
+        body.style.backgroundSize = 'cover';
     }
     //Remove the class from body tag when the View is destroyed
     ngOnDestroy() {

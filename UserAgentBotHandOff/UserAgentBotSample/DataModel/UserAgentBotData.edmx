@@ -17,6 +17,12 @@
           <Property Name="DeviceType" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="AttendedBy" Type="int" />
           <Property Name="AttendedAgent" Type="nvarchar" MaxLength="150" />
+          <Property Name="ServiceURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="ChannelId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChannelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConversationId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConversationName" Type="nvarchar" MaxLength="50" />
+          <Property Name="JsonString" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -157,6 +163,12 @@
           <Property Name="DeviceType" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="AttendedBy" Type="Int32" />
           <Property Name="AttendedAgent" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ChannelId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChannelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConversationId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConversationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JsonString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -266,6 +278,12 @@
           <EntitySetMapping Name="CustomerAgentLog">
             <EntityTypeMapping TypeName="UserAgentDBModel.CustomerAgentLog">
               <MappingFragment StoreEntitySet="CustomerAgentLog">
+                <ScalarProperty Name="JsonString" ColumnName="JsonString" />
+                <ScalarProperty Name="ConversationName" ColumnName="ConversationName" />
+                <ScalarProperty Name="ConversationId" ColumnName="ConversationId" />
+                <ScalarProperty Name="ChannelName" ColumnName="ChannelName" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="ServiceURL" ColumnName="ServiceURL" />
                 <ScalarProperty Name="AttendedAgent" ColumnName="AttendedAgent" />
                 <ScalarProperty Name="AttendedBy" ColumnName="AttendedBy" />
                 <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />

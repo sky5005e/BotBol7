@@ -25,7 +25,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
-    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -164,7 +164,7 @@
     <Content Include="app\admin\account\account.component.html" />
     <Content Include="app\admin\admin.component.html" />
     <Content Include="app\admin\agents\agents.component.html" />
-    <Content Include="app\admin\agenttest\agenttest.component.html" />
+    <Content Include="app\admin\agentchat\agentchat.component.html" />
     <Content Include="app\admin\analytics\analytics.component.html" />
     <Content Include="app\admin\banned\banned.component.html" />
     <Content Include="app\admin\department\department.component.html" />
@@ -186,7 +186,9 @@
     <Content Include="app\forgotpassword\forgotpassword.component.html" />
     <Content Include="app\home\home.component.html" />
     <Content Include="app\login\login.component.html" />
+    <Content Include="app\privacy\privacy.component.html" />
     <Content Include="app\register\register.component.html" />
+    <Content Include="app\terms\terms.component.html" />
     <Content Include="app\user\user.component.html" />
     <Content Include="app\_directives\alert.component.html" />
     <Content Include="app\_directives\chatwindow.component.html" />
@@ -632,7 +634,7 @@
     <TypeScriptCompile Include="app\admin\admin.module.ts" />
     <TypeScriptCompile Include="app\admin\admin.routing.ts" />
     <TypeScriptCompile Include="app\admin\agents\agents.component.ts" />
-    <TypeScriptCompile Include="app\admin\agenttest\agenttest.component.ts" />
+    <TypeScriptCompile Include="app\admin\agentchat\agentchat.component.ts" />
     <TypeScriptCompile Include="app\admin\analytics\analytics.component.ts" />
     <TypeScriptCompile Include="app\admin\banned\banned.component.ts" />
     <TypeScriptCompile Include="app\admin\department\department.component.ts" />
@@ -662,8 +664,12 @@
     <TypeScriptCompile Include="app\login\index.ts" />
     <TypeScriptCompile Include="app\login\login.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\privacy\index.ts" />
+    <TypeScriptCompile Include="app\privacy\privacy.component.ts" />
     <TypeScriptCompile Include="app\register\index.ts" />
     <TypeScriptCompile Include="app\register\register.component.ts" />
+    <TypeScriptCompile Include="app\terms\index.ts" />
+    <TypeScriptCompile Include="app\terms\terms.component.ts" />
     <TypeScriptCompile Include="app\user\index.ts" />
     <TypeScriptCompile Include="app\user\user.component.ts" />
     <TypeScriptCompile Include="app\_directives\alert.component.ts" />

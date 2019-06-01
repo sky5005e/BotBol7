@@ -10,6 +10,9 @@ namespace UserAgentBot.Controllers
     public class BaseAPIController : ApiController
     {
         protected readonly DataModel.UserAgentDBEntities DB = new DataModel.UserAgentDBEntities();
+
+        public string MemberUserId { get; set; }
+
         protected HttpResponseMessage ToJson(dynamic obj)
         {
             var response = Request.CreateResponse(HttpStatusCode.OK);

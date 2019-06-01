@@ -33,6 +33,10 @@ import {
 
 import { FileUploadComponent } from './_directives/fileupload.component';
 
+import { PrivacyComponent } from './privacy/index';
+import { TermsComponent } from './terms/index';
+
+
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -43,7 +47,7 @@ import {
     BannedComponent, DepartmentComponent, GoalsComponent, HistoryComponent,
     PersonalComponent, RolesComponent, RoutingComponent, ShortcutsComponent,
     TriggersComponent, VisitorsComponent, WidgetComponent, MonitorComponent,
-    AgentTestComponent
+    AgentChatComponent
 } from './admin/index';
 
 import { UsersComponent } from './user/index';
@@ -96,7 +100,9 @@ import { QuesAnswerComponent } from './admin/quesanswer/index';
         WidgetComponent,
         MonitorComponent,
         ChartWindowComponent,
-        AgentTestComponent,
+        AgentChatComponent,
+        TermsComponent,
+        PrivacyComponent,
 
         FileUploadComponent
 

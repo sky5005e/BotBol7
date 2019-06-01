@@ -320,27 +320,8 @@ namespace UserAgentBot.Controllers
             }
             try
             {
-                //var user = new ApplicationUser() { UserName = model.UserName, Email = model.UserName };
-
-                //user.User = new UserInformation
-                //{
-                //    FirstName = model.FirstName,
-                //    LastName = model.LastName,
-                //    Email = model.UserName,
-                //    AspNetUserId = user.Id
-                //};
-
-                // IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-                // if (!result.Succeeded)
-                //{
-                //  return GetErrorResult(result);
-                //}
-
-                // return BadRequest(ModelState);
                 var msg = new Repository.UserRepo().RegisterUser(model);
                 var t = await Task.FromResult<string>(msg);
-
                 return Ok(t);
             }
             catch (Exception ex)
@@ -364,7 +345,11 @@ namespace UserAgentBot.Controllers
             try
             {
                 var token = new Repository.UserRepo().ValidateUser(model);
-                var t = await Task.FromResult<string>(token);
+                if (token != null)
+                {
+                    System.Web.HttpContext.Current.Session["UserID"] = token.UserId;
+                }
+                var t = await Task.FromResult<Models.UserLoginInfoViewModel>(token);
                 return Ok(t);
             }
             catch (Exception ex)

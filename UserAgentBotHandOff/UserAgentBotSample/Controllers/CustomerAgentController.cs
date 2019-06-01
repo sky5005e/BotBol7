@@ -14,13 +14,22 @@ namespace UserAgentBot.Controllers
         [Route("get")]
         public HttpResponseMessage Get()
         {
-            var result = Repository.UtilityRepo.GetPendingRequestAsync();
+            var result = Repository.UtilityRepo.GetPendingRequestAsync(DateTime.UtcNow.Date);
             return ToJson(result); 
         }
-        [Route("monitoring")]
-        public HttpResponseMessage GetMonitoring()
+        [Route("monitoring/{day}")]
+        public HttpResponseMessage GetMonitoring(int day)
         {
-            var result = Repository.UtilityRepo.GetMonitoringResultAsync(DateTime.Now.AddDays(-7).Date);
+            var result = Repository.UtilityRepo.GetMonitoringResultAsync(DateTime.Now.AddDays(-day).Date);
+            return ToJson(result);
+        }
+
+        [Route("chats/{take}")]
+        public HttpResponseMessage GetChats(int take)
+        {
+            string userId = "0";
+            userId = System.Web.HttpContext.Current.Session["UserID"] != null ? System.Web.HttpContext.Current.Session["UserID"].ToString() : "0";
+            var result = Repository.UtilityRepo.GetLatestChatMessageAsync(userId, take);
             return ToJson(result);
         }
 

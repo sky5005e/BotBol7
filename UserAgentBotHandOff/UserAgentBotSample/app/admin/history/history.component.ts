@@ -1,7 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../../_services/index';
+import { AlertService, AuthenticationService, PendingAssistantService } from '../../_services/index';
+
+import { Global } from '../../_shared/global';
 
 @Component({
     moduleId: module.id,
@@ -12,19 +14,21 @@ export class HistoryComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
-
+    chats: any;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private paService: PendingAssistantService) { }
 
     ngOnInit() {
-        // reset login status
-        //this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/agents';
+        this.LoadMessage();
     }
-
+    LoadMessage(): void {
+        this.paService.get(Global.BASE_CAA_ENDPOINT + "chats/30")
+            .subscribe(res => { this.chats = res; console.log('data', this.chats); }
+            );
+    }
     
 }

@@ -14,8 +14,12 @@ import {
     BannedComponent, DepartmentComponent, GoalsComponent, HistoryComponent,
     PersonalComponent, RolesComponent, RoutingComponent, ShortcutsComponent,
     TriggersComponent, VisitorsComponent, WidgetComponent, MonitorComponent,
-    AgentTestComponent
+    AgentChatComponent
 } from './admin/index';
+
+import { PrivacyComponent } from './privacy/index';
+import { TermsComponent } from './terms/index';
+
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -40,12 +44,13 @@ const appRoutes: Routes = [
     { path: 'visitors', component: VisitorsComponent, canActivate: [AuthGuard] },
     { path: 'widget', component: WidgetComponent, canActivate: [AuthGuard] },
     { path: 'monitoring', component: MonitorComponent, canActivate: [AuthGuard] },
-    { path: 'agenttest', component: AgentTestComponent, canActivate: [AuthGuard] },
+    { path: 'agentchat', component: AgentChatComponent, canActivate: [AuthGuard] },
 
-    
+    { path: 'privacy', component: PrivacyComponent },
+    { path: 'terms', component: TermsComponent },
 
     //{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-   // { path: 'User', loadChildren: './user/user.module#UserModule' }
+    //{ path: 'User', loadChildren: './user/user.module#UserModule' }
     // otherwise redirect to home
     { path: '**', redirectTo: '/login' }
 

@@ -77,7 +77,8 @@ let UsersComponent = class UsersComponent {
         switch (this.dbops) {
             case enum_1.DBOperation.create:
                 this._userService.post(global_1.Global.BASE_USER_ENDPOINT, formData._value).subscribe(data => {
-                    if (data == 1) {
+                    if (data == 1) //Success
+                     {
                         this.msg = "Data successfully added.";
                         this.LoadUsers();
                     }
@@ -91,7 +92,8 @@ let UsersComponent = class UsersComponent {
                 break;
             case enum_1.DBOperation.update:
                 this._userService.put(global_1.Global.BASE_USER_ENDPOINT, formData._value.Id, formData._value).subscribe(data => {
-                    if (data == 1) {
+                    if (data == 1) //Success
+                     {
                         this.msg = "Data successfully updated.";
                         this.LoadUsers();
                     }
@@ -105,7 +107,8 @@ let UsersComponent = class UsersComponent {
                 break;
             case enum_1.DBOperation.delete:
                 this._userService.delete(global_1.Global.BASE_USER_ENDPOINT, formData._value.Id).subscribe(data => {
-                    if (data == 1) {
+                    if (data == 1) //Success
+                     {
                         this.msg = "Data successfully deleted.";
                         this.LoadUsers();
                     }

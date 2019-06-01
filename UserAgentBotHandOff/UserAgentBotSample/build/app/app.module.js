@@ -24,16 +24,18 @@ const index_2 = require("./_directives/index");
 const auth_guard_1 = require("./_guards/auth.guard");
 const index_3 = require("./_services/index");
 const fileupload_component_1 = require("./_directives/fileupload.component");
-const index_4 = require("./home/index");
-const index_5 = require("./login/index");
-const index_6 = require("./register/index");
-const index_7 = require("./forgotpassword/index");
-const index_8 = require("./admin/index");
-const index_9 = require("./user/index");
-const index_10 = require("./_filter/index");
+const index_4 = require("./privacy/index");
+const index_5 = require("./terms/index");
+const index_6 = require("./home/index");
+const index_7 = require("./login/index");
+const index_8 = require("./register/index");
+const index_9 = require("./forgotpassword/index");
+const index_10 = require("./admin/index");
+const index_11 = require("./user/index");
+const index_12 = require("./_filter/index");
 const search_component_1 = require("./_shared/search.component");
 const errorhandler_1 = require("./_shared/errorhandler");
-const index_11 = require("./admin/quesanswer/index");
+const index_13 = require("./admin/quesanswer/index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -53,33 +55,35 @@ AppModule = __decorate([
             index_2.AlertComponent,
             index_2.AdminHeaderComponent,
             index_2.AdminFooterComponent,
-            index_4.HomeComponent,
-            index_5.LoginComponent,
-            index_6.RegisterComponent,
-            index_7.ForgotPasswordComponent,
-            index_9.UsersComponent,
-            index_10.UserFilterPipe,
+            index_6.HomeComponent,
+            index_7.LoginComponent,
+            index_8.RegisterComponent,
+            index_9.ForgotPasswordComponent,
+            index_11.UsersComponent,
+            index_12.UserFilterPipe,
             search_component_1.SearchComponent,
             index_2.LogoutComponent,
-            index_11.QuesAnswerComponent,
-            index_8.AdminComponent,
-            index_8.AccountComponent,
-            index_8.AgentComponent,
-            index_8.AnalyticsComponent,
-            index_8.BannedComponent,
-            index_8.DepartmentComponent,
-            index_8.GoalsComponent,
-            index_8.HistoryComponent,
-            index_8.PersonalComponent,
-            index_8.RolesComponent,
-            index_8.RoutingComponent,
-            index_8.ShortcutsComponent,
-            index_8.TriggersComponent,
-            index_8.VisitorsComponent,
-            index_8.WidgetComponent,
-            index_8.MonitorComponent,
+            index_13.QuesAnswerComponent,
+            index_10.AdminComponent,
+            index_10.AccountComponent,
+            index_10.AgentComponent,
+            index_10.AnalyticsComponent,
+            index_10.BannedComponent,
+            index_10.DepartmentComponent,
+            index_10.GoalsComponent,
+            index_10.HistoryComponent,
+            index_10.PersonalComponent,
+            index_10.RolesComponent,
+            index_10.RoutingComponent,
+            index_10.ShortcutsComponent,
+            index_10.TriggersComponent,
+            index_10.VisitorsComponent,
+            index_10.WidgetComponent,
+            index_10.MonitorComponent,
             index_2.ChartWindowComponent,
-            index_8.AgentTestComponent,
+            index_10.AgentChatComponent,
+            index_5.TermsComponent,
+            index_4.PrivacyComponent,
             fileupload_component_1.FileUploadComponent
         ],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' },

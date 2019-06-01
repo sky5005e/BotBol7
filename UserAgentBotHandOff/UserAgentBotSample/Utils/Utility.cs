@@ -64,10 +64,11 @@ namespace UserAgentBot.Utils
         /// <returns></returns>  
         public static Attachment GetServerAttachment(string filepath, string FileName)
         {
+            string type = GetContentType(filepath);
             return new Attachment
             {
                 Name = FileName,
-                ContentType = "image/png",
+                ContentType = type,//"image/png",
                 ContentUrl = string.Format("http://useragentbot.azurewebsites.net/UploadedFiles/{0}", filepath)
             };
         }

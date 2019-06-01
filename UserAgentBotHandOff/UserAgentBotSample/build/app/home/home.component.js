@@ -11,86 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const index_1 = require("../_services/index");
+const index_2 = require("../_services/index");
+const global_1 = require("../_shared/global");
 let HomeComponent = class HomeComponent {
-    constructor(userService) {
+    constructor(userService, paService) {
         this.userService = userService;
+        this.paService = paService;
         this.users = [];
-        this.chartData = [
-            {
-                label: "Sessions",
-                data: [8, 4, 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15, 8, 4] // 12, 7, 15, 12, 5, 8, 5, 6, 20, 2, 15,12, 8, 24]
-            }
-        ];
-        this.chartLabels = [
-            "Jan 17", "Jan 18", "Jan 19", "Jan 20", "Jan 21", "Jan 22", "Jan 23", "Jan 24", "Jan 25", "Jan 26", "Jan 27", "Jan 28", "Jan 29", "Jan 30", "Jan 31"
-        ];
+        this.chartdatashow = false;
         this.chartOptions = {
             responsive: true
         };
+        this.chartLabels = [];
+        this.chartData = [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        console.log("currentUser", this.currentUser);
     }
-    //private chartOptions = {
-    //    scales: {
-    //        xAxes: [{
-    //            time: {
-    //                unit: 'date'
-    //            },
-    //            gridLines: {
-    //                display: false
-    //            },
-    //            ticks: {
-    //                maxTicksLimit: 7
-    //            }
-    //        }],
-    //        yAxes: [{
-    //            ticks: {
-    //                min: 0,
-    //                max: 40000,
-    //                maxTicksLimit: 5
-    //            },
-    //            gridLines: {
-    //                color: "rgba(0, 0, 0, .125)",
-    //            }
-    //        }],
-    //    },
-    //    legend: {
-    //        display: false
-    //    }
-    //    //scales: {
-    //    //    yAxes: [{
-    //    //        ticks: {
-    //    //            beginAtZero: true
-    //    //        }
-    //    //    }]
-    //    //}
-    //};
     onChartClick(event) {
         console.log(event);
     }
     ngOnInit() {
-        /*
-        this.chartLabels = Array.apply(null, new Array(30))
-            .map(function () {
-                return new Date();
-            })
-            .map(function (v, i) {
-                v.setDate(v.getDate() - i);
-                return v;
-            })
-            .map(function (v) {
-                var dd = v.getDate();
-                var mm = v.getMonth() + 1;
-                var yyyy = v.getFullYear();
-                if (dd < 10) { dd = '0' + dd }
-                if (mm < 10) { mm = '0' + mm }
-                v = mm + '/' + dd + '/' + yyyy;
-                return v;
-                // return this.formatDate(v);
-            })
-            .reverse();
-
-        */
+        this.LoadChartData(false);
         this.loadAllUsers();
+        this.LoadChartAll();
+        this.LoadChats();
     }
     deleteUser(id) {
         this.userService.delete(id).subscribe(() => { this.loadAllUsers(); });
@@ -98,13 +42,79 @@ let HomeComponent = class HomeComponent {
     loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
     }
+    LoadChartAll() {
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "/monitoring/15")
+            .subscribe(res => {
+            this.PAAssitants = res;
+            console.log('data', this.PAAssitants);
+            this.LoadChartData(true);
+        });
+    }
+    LoadChats() {
+        this.paService.get(global_1.Global.BASE_CAA_ENDPOINT + "/chats/10")
+            .subscribe(res => {
+            this.chats = res;
+            console.log('chats', this.chats);
+        });
+    }
+    LoadChartData(isdata) {
+        this.chartLabels = Array.apply(null, new Array(15))
+            .map(function () {
+            return new Date();
+        })
+            .map(function (v, i) {
+            v.setDate(v.getDate() - i);
+            return v;
+        })
+            .map(function (v) {
+            var strArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var d = v.getDate();
+            var m = strArray[v.getMonth()];
+            var y = v.getFullYear();
+            return m + ' ' + (d <= 9 ? '0' + d : d); //'' + (d <= 9 ? '0' + d : d) + '-' + m + '-' + y;
+        })
+            .reverse();
+        this.chartdatashow = true;
+        // console.log(this.chartLabels);
+        if (isdata) {
+            this.chartData = [
+                { data: this.Data('Visited'), label: 'Visited' },
+            ];
+        }
+        else {
+            this.chartData = [
+                {
+                    label: "Visited",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                }
+            ];
+        }
+    }
+    Data(label) {
+        let data = [];
+        // this.dates = Date[] = [];
+        this.dates = Array.apply(null, new Array(15))
+            .map(function () {
+            return new Date();
+        })
+            .map(function (v, i) {
+            v.setDate(v.getDate() - i);
+            return v;
+        }).reverse();
+        for (var i = 0; i < this.dates.length; i++) {
+            let iDate = this.dates[i];
+            let point = this.PAAssitants.filter(item => new Date(item.created).getDate() == iDate.getDate());
+            data.push(point.length);
+        }
+        return data;
+    }
 };
 HomeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         templateUrl: '/app/home/home.component.html'
     }),
-    __metadata("design:paramtypes", [index_1.UserService])
+    __metadata("design:paramtypes", [index_1.UserService, index_2.PendingAssistantService])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

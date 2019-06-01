@@ -38,7 +38,7 @@
 
             <div class="buynow">
                 <div class="col-xl-12">
-                    <h3 class="pull-left">Hello, mukesh!</h3>
+                    <h3 class="pull-left">Hello, {{currentUser.firstName}}!</h3>
                     <span class="pull-right">4 days left in trial <a href="#" class="btn btn-warning">Buy Now</a></span>
 
                 </div>
@@ -118,13 +118,9 @@
                 <div class="right_tb">
                     <ul>
                         <h4>Latest Chat Updates</h4>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-                        <li><a href="#"><b>Nov 07</b>New Agent Status Metrics Offe....</a></li>
-
+                        <li *ngFor="let chat of chats">
+                            <a href="#"><b>{{chat.created | date:'h:mma'}}</b>{{chat.message}}</a>
+                        </li>
                     </ul>
 
                     <div class="tag"><img src="assets/img/tags_ipm.png" width="80" height="90"></div>

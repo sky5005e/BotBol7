@@ -22,5 +22,11 @@ namespace UserAgentBot.DataModel
         public string DeviceType { get; set; }
         public Nullable<int> AttendedBy { get; set; }
         public string AttendedAgent { get; set; }
+        public string ServiceURL { get; set; }
+        public string ChannelId { get; set; }
+        public string ChannelName { get; set; }
+        public string ConversationId { get; set; }
+        public string ConversationName { get; set; }
+        public string JsonString { get; set; }
     }
 }

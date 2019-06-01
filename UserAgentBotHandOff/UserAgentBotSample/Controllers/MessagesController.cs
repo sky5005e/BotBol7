@@ -93,7 +93,7 @@ namespace UserAgentBot.Controllers
                         //
                         // Here's an example:
                         if (!string.IsNullOrEmpty(activity.Text)
-                            && activity.Text.ToLower().Contains(CommandRequestConnection))
+                            && activity.Text.ToLower().Contains(CommandRequestConnection) )//&& System.Web.HttpContext.Current.Session["UserID"] != null)
                         {
                             messageRouterResult = messageRouterManager.RequestConnection(activity);
                             // log all the request and thier sources
@@ -163,6 +163,10 @@ namespace UserAgentBot.Controllers
                     }
                 }
 
+                if(messageRouterResult!=null && messageRouterResult.Type == MessageRouterResultType.OK && string.IsNullOrEmpty(messageRouterResult.ErrorMessage))
+                {
+                    await Repository.UtilityRepo.CustomerAgentChatHistoryLogAsync(messageRouterResult);
+                }
                 // Handle the result, if required
                 await messageRouterResultHandler.HandleResultAsync(messageRouterResult);
             }

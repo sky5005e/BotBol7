@@ -9,6 +9,8 @@ const index_5 = require("./forgotpassword/index");
 const auth_guard_1 = require("./_guards/auth.guard");
 const index_6 = require("./admin/quesanswer/index");
 const index_7 = require("./admin/index");
+const index_8 = require("./privacy/index");
+const index_9 = require("./terms/index");
 const appRoutes = [
     { path: 'home', component: index_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'login', component: index_2.LoginComponent },
@@ -32,9 +34,11 @@ const appRoutes = [
     { path: 'visitors', component: index_7.VisitorsComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'widget', component: index_7.WidgetComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'monitoring', component: index_7.MonitorComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'agenttest', component: index_7.AgentTestComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'agentchat', component: index_7.AgentChatComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'privacy', component: index_8.PrivacyComponent },
+    { path: 'terms', component: index_9.TermsComponent },
     //{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-    // { path: 'User', loadChildren: './user/user.module#UserModule' }
+    //{ path: 'User', loadChildren: './user/user.module#UserModule' }
     // otherwise redirect to home
     { path: '**', redirectTo: '/login' }
 ];

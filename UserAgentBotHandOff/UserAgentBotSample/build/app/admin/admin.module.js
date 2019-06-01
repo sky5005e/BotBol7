@@ -15,5 +15,5 @@
 //    declarations: [AdminComponent, AdminLeftsideComponent, AdminHeaderComponent],
 //    providers:[]
 //})
-//export class AdminModule { } 
+//export class AdminModule { }
 //# sourceMappingURL=admin.module.js.map

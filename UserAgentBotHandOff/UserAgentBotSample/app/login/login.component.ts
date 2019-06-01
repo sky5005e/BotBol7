@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
         body.classList.remove("sticky-footer");
         body.classList.remove("bg-dark");
 
-        body.style.background = 'url(assets/img/bge.jpg) no-repeat; background-size:cover;';
+        body.style.background = 'url(assets/img/bge.jpg) no-repeat';
+        body.style.backgroundSize = 'cover';
 
     }
 

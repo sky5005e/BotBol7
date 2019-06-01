@@ -234,11 +234,16 @@ namespace UserAgentBot.MessageRouting
 
             if (!string.IsNullOrEmpty(messageToConversationOwner) && conversationOwnerParty != null)
             {
+                // for client && owner party accepted to chat 1:1
+                await Repository.UtilityRepo.CustomerAgentConnectedAsync(conversationOwnerParty, true, conversationOwnerParty.ConversationAccount.Name,  conversationOwnerParty.ConversationAccount.Id, messageToConversationOwner);
                 await messageRouterManager.SendMessageToPartyByBotAsync(conversationOwnerParty, messageToConversationOwner);
             }
 
             if (!string.IsNullOrEmpty(messageToConversationClient) && conversationClientParty != null)
             {
+                // for client party
+                await Repository.UtilityRepo.CustomerAgentConnectedAsync(conversationClientParty, false, "", "", messageToConversationClient);
+
                 await messageRouterManager.SendMessageToPartyByBotAsync(conversationClientParty, messageToConversationClient);
             }
         }

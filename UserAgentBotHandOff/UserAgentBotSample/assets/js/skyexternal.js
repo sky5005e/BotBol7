@@ -12,14 +12,6 @@
     }
 
     return {
-        /*
-        func1: function () {
-            alert('function 1 called');
-        },
-        func2: function () {
-            alert('function 2 called');
-        },*/
-
         //this is used to close a popup
         close_popup: function close_popup(id) {
             for (var iii = 0; iii < popups.length; iii++) {
@@ -27,7 +19,6 @@
                     Array.remove(popups, iii);
                     document.getElementById(id).style.display = "none";
                     this.calculate_popups();
-
                     return;
                 }
             }
@@ -36,7 +27,6 @@
         //displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
         display_popups: function display_popups() {
             var right = 220;
-
             var iii = 0;
             for (iii; iii < total_popups; iii++) {
                 if (popups[iii] != undefined) {
@@ -54,7 +44,7 @@
         },
 
         //creates markup for a new popup. Adds the id to popups array.
-        register_popup: function register_popup(id, name) {
+        register_popup: function register_popup(id, name,userid, agentName) {
             for (var iii = 0; iii < popups.length; iii++) {
                 //already registered. Bring it to front.
                 if (id == popups[iii]) {
@@ -69,7 +59,7 @@
             element = element + '<div class="popup-head-left">' + name + '</div>';
             element = element + '<div class="popup-head-right"><a onclick="skyExtObject.close_popup(\'' + id + '\')">&#10005;</a></div>';
             element = element + '<div style="clear: both"></div>Command for channel aggregation:<br/> <b>command watch</b> <br/><textarea style="width:100%;">command accept ' + id + '</textarea><br/></div><div class="popup-messages">';
-            element = element + '<iframe src="https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U&userId=E2LVkp79VXo&userName=AgentSky" width="300" height="360" /></div></div>';
+            element = element + '<iframe src="https://webchat.botframework.com/embed/useragentbot_FhIXuWlwjYT?s=35uCpBpXgwo.cwA.0gA.kzVegkk4SVcoWttR2HAVx9-VGU8wyxB93FTTlrlsq9U&userId='+userid+'&userName=Agent_' + agentName+'" width="298" height="390" /></div></div>';
             document.getElementById("bot-container").innerHTML = document.getElementById("bot-container").innerHTML + element;
 
             popups.unshift(id);
@@ -95,6 +85,5 @@
     //recalculate when window is loaded and also when window is resized.
     window.addEventListener("resize", this.calculate_popups);
     window.addEventListener("load", this.calculate_popups);
-
-
+    
 })(skyExtObject || {})
